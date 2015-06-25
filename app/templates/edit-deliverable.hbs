@@ -1,0 +1,56 @@
+    <div class="panel-body">
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="inputKeyResult" class="col-sm-2 control-label">Key Result</label>
+          <div class="col-sm-9">
+            {{view "select"
+              contentBinding="controller.krList"
+              optionValuePath="content.id"
+              optionLabelPath="content.name"
+              selectionBinding="keyResult.content"
+              prompt="Please select a key result ..."
+              classNames="form-control"}}
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputTeam" class="col-sm-2 control-label">Team</label>
+          <div class="col-sm-9">
+          {{view "select"
+            contentBinding="controller.teamList"
+            optionValuePath="content.id"
+            optionLabelPath="content.name"
+            selectionBinding="team.content"
+            prompt="Please select a team ..."
+            classNames="form-control"}}
+          </div>
+          {{#unless team.id}} <div class="col-sm-1 invalid"></div>{{/unless}}
+        </div>
+        <div class="form-group">
+          <label for="inputName" class="col-sm-2 control-label">Name</label>
+          <div class="col-sm-9">
+            {{focus-input class="form-control" id="inputName" placeholder="Enter deliverable name" value=name}}
+          </div>
+          {{#if errors.name}} <div class="col-sm-1 invalid" data-toggle="tooltip" {{bind-attr title="nameErrors"}}></div> {{/if}}
+        </div>
+        <div class="form-group">
+          <label for="inputDescription" class="col-sm-2 control-label">Description</label>
+          <div class="col-sm-9">
+            {{textarea class="form-control" rows="5" id="inputDescription" placeholder="Enter description" value=description}}
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputPriority" class="col-sm-2 control-label">Priority</label>
+          <div class="col-sm-9">
+            {{input class="form-control" id="inputPriority" placeholder="Enter priority" value=priority}}
+          </div>
+          {{#if errors.priority}} <div class="col-sm-1 invalid" data-toggle="tooltip" {{bind-attr title="priorityErrors"}}></div> {{/if}}
+        </div>
+        {{#if isValid}} 
+        <button type="submit" class="btn btn-primary" {{action "saveDeliverable"}}>Save Deliverable</button>
+        {{else}}
+        <button type="submit" class="btn btn-primary disabled">Save Deliverable</button>
+        {{/if}}
+        <button type="button" class="btn btn-warning" {{action "archiveDeliverable"}}>Archive Deliverable</button>
+        <button type="button" class="btn" data-toggle="collapse" data-target="#collapseDeliverable">Discard Changes</button>
+      </form>
+    </div>

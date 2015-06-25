@@ -1,0 +1,68 @@
+<h1>Deliverable Update: {{deliverable.name}}</h1>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <span>{{#link-to 'quarters' session.organisation}}<span class="glyphicon glyphicon-home"></span> All Quarters{{/link-to}} > {{#link-to 'objectives' session.organisation deliverable.keyResult.quarter.id}}{{deliverable.keyResult.quarter.year}} Q{{deliverable.keyResult.quarter.quarter}}{{/link-to}} > {{#link-to 'keyResult' session.organisation deliverable.keyResult.quarter.id deliverable.keyResult.id}}{{deliverable.keyResult.objective.name}}: {{deliverable.keyResult.name}}{{/link-to}} > {{#link-to 'deliverable' session.organisation deliverable.keyResult.quarter.id deliverable.keyResult.id deliverable.id}}{{deliverable.name}}{{/link-to}} > Update</span>
+  </div>
+  <div class="panel-body">
+    {{#unless id}}<div class="alert alert-warning">All of the values below apart from the update date have been pre-populated with the values from the previous status update for reference. Please change them to the appropriate values for this update.</div>{{/unless}}
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="inputUpdateDate" class="col-sm-2 control-label">Update Date</label>
+        <div class="col-sm-9">
+          {{input type="date" class="form-control" id="inputUpdateDate" value=updateDateISO}}
+        </div>
+        {{#if errors.updateDateISO}} <div class="col-sm-1 invalid"></div> {{/if}}
+      </div>
+      <div class="form-group">
+        <label for="inputStatus" class="col-sm-2 control-label">Status</label>
+        <div class="col-sm-9">
+        {{view "select"
+          content=controllers.application.status
+          selection=status
+          prompt="Please select a status ..."
+          classNames="form-control"}}
+        </div>
+        {{#if errors.status}} <div class="col-sm-1 invalid" data-toggle="tooltip" {{bind-attr title="statusErrors"}}></div> {{/if}}
+      </div>
+      <div class="form-group">
+        <label for="inputCommentary" class="col-sm-2 control-label">Commentary</label>
+        <div class="col-sm-9">
+          {{textarea class="form-control" rows="6" id="inputCommentary" placeholder="Enter descriptive comment for this update" value=commentary}}
+        </div>
+        {{#if errors.commentary}} <div class="col-sm-1 invalid" data-toggle="tooltip" {{bind-attr title="commentaryErrors"}}></div> {{/if}}
+      </div>
+      {{#if showDeliveryDate}}
+        <div class="form-group">
+          <label for="inputDeliveryDate" class="col-sm-2 control-label" data-toggle="tooltip" title="Optional: Supply estimated delivery date when work has started">Estimated Delivery Date</label>
+          <div class="col-sm-9">
+            {{input type="date" class="form-control" id="inputDeliveryDate" value=deliveryDateISO}}
+          </div>
+        </div>
+      {{/if}}
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Flag for country review</label>
+        <div class="col-sm-4">
+          {{input type="checkbox" name="countryFlag" checked=countryFlag}}
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Flag for team review</label>
+        <div class="col-sm-4">
+          {{input type="checkbox" name="teamFlag" checked=teamFlag}}
+        </div>
+      </div>
+      {{#if isValid}} 
+      <button type="submit" class="btn btn-primary" {{action "saveDeliverableUpdate"}}>Save Deliverable Update</button>
+      {{else}}
+      <button type="submit" class="btn btn-primary disabled">Save Deliverable Update</button>
+      {{/if}}
+      {{#if id}}
+      <button type="button" class="btn btn-warning" {{action "archiveDeliverableUpdate"}}>Archive Update</button>
+      <button type="button" class="btn" {{action "discardDeliverableUpdate"}}>Discard Changes</button>
+      {{else}}
+      <button type="button" class="btn" {{action "discardNewDeliverableUpdate"}}>Discard Changes</button>
+      {{/if}}
+    </form>
+  </div>
+</div>
+{{outlet}}

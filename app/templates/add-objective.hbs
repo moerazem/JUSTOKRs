@@ -1,0 +1,81 @@
+<h1>Add Objective</h1>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    {{#link-to 'quarters' session.organisation}}<span class="glyphicon glyphicon-home"></span> All Quarters{{/link-to}} > Add Objective
+  </div>
+  <div class="panel-body">
+    <div class="alert alert-danger">Warning: After saving this record, you'll need to add a key result for this objective before it shows in the list of objectives.</div>
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="inputName" class="col-sm-3 control-label">Name</label>
+        <div class="col-sm-8">
+          {{focus-input class="form-control" id="inputName" placeholder="Enter objective name" value=name}}
+        </div>
+        {{#if errors.name}} <div class="col-sm-1 invalid" data-toggle="tooltip" {{bind-attr title="nameErrors"}}></div> {{/if}}
+      </div>
+      <div class="form-group">
+        <label for="inputDescription" class="col-sm-3 control-label">Description</label>
+        <div class="col-sm-8">
+          {{textarea class="form-control" rows="3" id="inputDescription" placeholder="Enter objective description" value=description}}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputObjectiveType" class="col-sm-3 control-label">Objective Type</label>
+        <div class="col-sm-8">
+        {{view "select"
+          content=controllers.application.objectiveType
+          selection=objectiveType
+          prompt="Please select an objective type ..."
+          classNames="form-control"}}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputProgrammeManager" class="col-sm-3 control-label">Programme Manager</label>
+        <div class="col-sm-8">
+        {{view "select"
+          content=controllers.application.programmeManager
+          selection=programmeManager
+          prompt="Please select a programme manager ..."
+          classNames="form-control"}}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputEngResp" class="col-sm-3 control-label">Engineering Person Responsible</label>
+        <div class="col-sm-8">
+          {{input class="form-control" id="inputEngResp" placeholder="Enter the name of the person in engineering responsible for this objective" value=engResp}}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputProdResp" class="col-sm-3 control-label">Product Person Responsible</label>
+        <div class="col-sm-8">
+          {{input class="form-control" id="inputProdResp" placeholder="Enter the name of the person in product responsible for this objective" value=productResp}}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputUxDesResp" class="col-sm-3 control-label">UX Design Person Responsible</label>
+        <div class="col-sm-8">
+          {{input class="form-control" id="inputUxDesResp" placeholder="Enter the name of the person in UX design responsible for this objective" value=uxDesResp}}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputUxResResp" class="col-sm-3 control-label">UX Research Person Responsible</label>
+        <div class="col-sm-8">
+          {{input class="form-control" id="inputUxResResp" placeholder="Enter the name of the person in UX research responsible for this objective" value=uxResResp}}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputDocLink" class="col-sm-3 control-label">Link to documentation</label>
+        <div class="col-sm-8">
+          {{input class="form-control" id="inputDocLink" placeholder="Enter the link for any documentation for this KR - in the wiki, JIRA, Google Docs, the web..." value=docLink}}
+        </div>
+      </div>
+      {{#if isValid}} 
+      <button type="submit" class="btn btn-primary" {{action "saveObjective"}}>Save Objective</button>
+      {{else}}
+      <button type="submit" class="btn btn-primary disabled">Save Objective</button>
+      {{/if}}
+      <button type="button" class="btn" {{action "discardChanges"}}>Discard Changes</button>
+    </form>
+  </div>
+</div>
+{{outlet}}

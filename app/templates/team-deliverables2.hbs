@@ -1,0 +1,7 @@
+{{#sortable-group tagName="ul" onChange="reorderItems" as |group|}}
+  {{#each model as |item|}}  
+    {{#sortable-item tagName="li" model=deliverable group=group}}
+      {{item.name}}
+    {{/sortable-item}}
+  {{/each}}
+{{/sortable-group}}

@@ -1,0 +1,39 @@
+<h1>Objectives for {{session.organisation_name}} in {{quarter.year}} Q{{quarter.quarter}}</h1>
+<div class="panel panel-default">
+  <div class="panel-heading">{{#link-to "quarters"}}<span class="glyphicon glyphicon-home"></span> All Quarters{{/link-to}} > {{quarter.year}} Q{{quarter.quarter}}
+    {{#if (can "add objective")}}<span class="pull-right">{{#link-to 'addObjective'}}<span class="glyphicon glyphicon-plus"></span> Add Objective{{/link-to}}</span>{{/if}}
+  </div>
+</div>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Objective Type</th>
+      <th class="col-sm-2">Name</th>
+      <th class="col-sm-2">Description</th>
+      <th>Programme Manager</th>
+      <th>Engineering</th>
+      <th>Product</th>
+      <th>UX Design</th>
+      <th>UX Research</th>
+      <th>Business Intelligence</th>
+      <th>KRs</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each objective in objectives itemController="objective"}}
+    <tr>
+      <td>{{objective.objectiveType}}</td>
+      <td>{{#link-to 'objectiveKeyResults' session.organisation quarter.id objective.id}}{{objective.name}}{{/link-to}}</td>
+      <td>{{#link-to 'objectiveKeyResults' session.organisation quarter.id objective.id}}{{objective.description}}{{/link-to}}</td>
+      <td>{{objective.programmeManager}}</td>
+      <td>{{objective.engResp}}</td>
+      <td>{{objective.productResp}}</td>
+      <td>{{objective.uxDesResp}}</td>
+      <td>{{objective.uxResResp}}</td>
+      <td>{{objective.biResp}}</td>
+      <td>{{#link-to 'objectiveKeyResults' session.organisation quarter.id objective.id}}{{objective.keyResults.length}} KRs{{/link-to}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{outlet}}

@@ -1,0 +1,12 @@
+<h1>Deliverables for {{session.organisation_name}} - {{name}}
+{{#if (can "add deliverable")}}{{#link-to 'addDeliverable' session.organisation quarter.id 0 class="btn btn-default btnAction pull-right"}}<span class="glyphicon glyphicon-plus"></span> Add Deliverable{{/link-to}}{{/if}}
+</h1>
+<div class="panel panel-default">
+  <div class="panel-heading">{{#link-to "quarters" session.organisation}}<span class="glyphicon glyphicon-home"></span> All Quarters{{/link-to}} > {{#link-to 'objectives' session.organisation quarter.id}}{{quarter.year}} Q{{quarter.quarter}}{{/link-to}} > {{#link-to 'teams' session.organisation quarter.id}}All Teams{{/link-to}} > {{name}}
+    {{#if (can "edit team")}}<span class="pull-right"><a data-toggle="collapse" data-parent="#accordion" href="#collapseTeam" class="pull-right"> <span class="glyphicon glyphicon-edit"></span> Edit Team</a></span>{{/if}}
+  </div>
+  <div id="collapseTeam" class="panel-collapse collapse">
+    {{view 'editTeam'}}
+  </div>
+</div>
+{{outlet}}

@@ -1,0 +1,32 @@
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th class="col-sm-2">Company Goal</th>
+      <th>Objective</th>
+      <th class="col-sm-2">Key Result</th>
+      <th class="printHide col-sm-1">Teams</th>
+      <th>Capitalisable?</th>
+      <th>Engineering</th>
+      <th>Product</th>
+      <th>Programme</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each kr in sortedKRs itemController="key-result"}}
+    <tr>
+      <td>{{kr.companyGoal}}</td>
+      <td>{{#link-to 'objectiveKeyResults' session.organisation kr.quarter.id kr.objective.id target="_blank"}}{{kr.objective.name}}{{/link-to}}</td>
+      <td>{{#link-to 'keyResult' session.organisation kr.quarter.id kr.id target="_blank"}}{{kr.name}}{{/link-to}}</td>
+      <td class="printHide">
+      {{#each oteam in kr.teams}}
+      {{#link-to 'teamDeliverables' session.organisation kr.quarter.id oteam.id target="_blank"}}{{oteam.shortCode}}&nbsp;{{/link-to}}
+      {{/each}}</td>
+      <td>{{input type="checkbox" name="capitalisable" checked=kr.capitalisable}}</td>
+      <td>{{kr.objective.engResp}}</td>
+      <td>{{kr.objective.productResp}}</td>
+      <td>{{kr.objective.programmeManager}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{outlet}}

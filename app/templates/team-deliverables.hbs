@@ -1,0 +1,50 @@
+<div class="table-responsive">
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Priority</th>
+      <th class="col-sm-1">Company Goal</th>
+      <th class="col-sm-1">Objective</th>
+      <th class="col-sm-1">Key Result</th>
+      <th>JIRA KR</th>
+      <th class="col-sm-1">Deliverable</th>
+      <th>Teams</th>
+      <th>Status</th>
+      <th class="col-sm-1">Commentary</th>
+      <th>Committed KR?</th>
+      <th class="printHide">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each d in arrangedContent itemController="team-deliverable"}}
+    <tr {{bind-attr class="d.operational"}}>
+      <td>{{#if (can "prioritise deliverable")}}{{inline-edit-priority value=d.priority add="addPriority" subtract="subtractPriority"}}{{else}}{{d.priority}}{{/if}}</td>
+      <td>{{d.keyResult.companyGoal}}</td>
+      <td>{{#link-to 'objectiveKeyResults' session.organisation d.keyResult.quarter.id d.keyResult.objective.id}}{{d.keyResult.objective.name}}{{/link-to}}</td>
+      <td {{bind-attr class="d.keyResult.ragColour"}}>{{#link-to 'keyResult' session.organisation d.keyResult.quarter.id d.keyResult.id}}{{d.keyResult.name}}{{/link-to}}</td>
+      <td>{{#if d.keyResult.jiraKR}}<a target="_blank" {{bind-attr href="d.keyResult.jiraURL"}}><span class="glyphicon glyphicon-globe"></span> {{d.keyResult.jiraKR}}</a>{{/if}}</td>
+      <td>{{#link-to 'deliverable' session.organisation d.keyResult.quarter.id d.keyResult.id d.id}}{{d.name}}{{/link-to}}</td>
+      <td>
+        {{#each oteam in d.keyResult.teams}}
+        {{#link-to 'teamDeliverables' session.organisation d.keyResult.quarter.id oteam.id}}{{oteam.shortCode}}&nbsp;{{/link-to}}
+        {{/each}}
+      </td>
+      <td>{{d.status}}</td>
+      <td {{bind-attr class="d.noRecentStatus"}} data-toggle="tooltip" {{bind-attr title="d.noRecentStatusText"}}>{{{format-cr d.commentary}}}</td>
+      <td>{{#if d.keyResult.committed}}<span class="glyphicon glyphicon-ok"></span>{{else}}<span class="glyphicon glyphicon-remove"></span>{{/if}}</td>
+      <td class="printHide">
+        <div class="btn-group actionBtnGroup" role="group" aria-label="...">
+          {{#if (can "add deliverableUpdate")}}
+            {{#link-to 'addDeliverableUpdate' session.organisation d.keyResult.quarter.id d.keyResult.id d.id class="btn btn-default btnAction" tagName="button" data-toggle="tooltip" title="Add Deliverable Update"}}<span class="glyphicon glyphicon-arrow-up"> </span>{{/link-to}}
+          {{/if}}
+          {{#if (can "edit deliverable")}}
+            {{#link-to 'deliverable' session.organisation d.keyResult.quarter.id d.keyResult.id d.id (query-params edit="1") class="btn btn-default btnAction" tagName="button" data-toggle="tooltip" title="Edit Deliverable"}}<span class="glyphicon glyphicon-edit"></span>{{/link-to}}
+          {{/if}}
+        </div>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>
+{{outlet}}

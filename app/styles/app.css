@@ -1,0 +1,148 @@
+html, body {
+  margin: 20px;
+}
+h1 {
+  font-size: 30px;
+  font-weight: bold;
+  color: #ce0b10;
+}
+h2 {
+  font-size: 26px;
+  font-weight: bold;
+  color: #4a4a49;
+}
+h3 {
+  font-size: 20px;
+}
+a {
+  color: #396ab2;
+}
+table {
+  font-size: 12px;
+}
+strong {
+  color: #eb6015;
+}
+.sortable-item {
+  transition: all .125s;
+}
+.sortable-item.is-dragging {
+  transition-duration: 0s;
+  background: red;
+  z-index: 10;
+}
+.sortable-item.is-dropping {
+  background: #f66;
+  z-index: 10;
+}
+.secondaryTitle {
+  color: #f3cc2c;
+  text-shadow: 1px 1px 1px #ce0b10;
+}
+.priorityEdit {
+  width: 20px;
+}
+.btnAction.btn {
+  font-size: 12px;
+}
+.actionBtnGroup {
+  width: 80px;
+}
+.priorityBtn {
+  padding: 5px;
+}
+.centreImage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.greyOperational {
+  color: #959597;
+}
+.greyOperational a {
+  color: #B0C4DE;
+}
+.leftPadImage {
+  padding-left: 50px;
+  width: 800px;
+}
+.spacer {
+  margin-bottom: 20px;
+}
+.invalid:before {
+  content: ' \25CF';
+  color: red;
+  font-size: 25px;
+}
+.countryFlag:before {
+  content: ' \25CF';
+  color: purple;
+  font-size: 16px;
+}
+.teamFlag:before {
+  content: ' \25CF';
+  color: yellow;
+  font-size: 16px;
+}
+.userName {
+  color: #f3cc2c;
+  float: left;
+  padding: 15px;
+}
+.changeOrg {
+  color: lightBlue;
+}
+.tlTitle {
+  font-weight: bold;
+}
+.tlItem {
+  margin: 1px;
+  padding: 2px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: lightGray;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.tlNormal {
+  background-color: lightGrey;
+}
+.tlRecentStatus {
+  background-color: lightBlue;
+}
+.tlRecentDelivery {
+  background-color: lightGreen;
+}
+.tlBlocked {
+  background-color: orange;
+}
+.tlLine {
+  height:1px; 
+  background: darkGray;
+  margin: 2px;
+}
+/* don't show links when printing */
+@media print {
+  a[href]:after {
+    content: none !important;
+  }
+  .printHide {
+    display: none !important;
+  }
+  thead {
+    display: table-header-group;
+  }
+  td {
+    -webkit-print-color-adjust: exact;
+  }
+  td.warning {
+    background-color: #fcf8e3 !important;
+  }
+  td.danger {
+    background-color: #f2dede !important;
+  }
+  td.success {
+    background-color: #dff0d8 !important;
+  }
+}

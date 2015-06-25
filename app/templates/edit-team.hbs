@@ -1,0 +1,32 @@
+  <div class="panel-body">
+    <div class="alert alert-warning">In a later version of the tool we're planning to add people and let you assign them to teams.  When we do this we'll change this section.</div>
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="inputName" class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-9">
+          {{focus-input class="form-control" id="inputName" placeholder="Enter team name" value=name}}
+        </div>
+        {{#if errors.name}} <div class="col-sm-1 invalid" data-toggle="tooltip" {{bind-attr title="nameErrors"}}></div> {{/if}}
+      </div>
+      <div class="form-group">
+        <label for="inputShortCode" class="col-sm-2 control-label">Short Code</label>
+        <div class="col-sm-9">
+          {{input class="form-control" id="inputShortCode" placeholder="Enter short code e.g. BUSI" value=shortCode}}
+        </div>
+        {{#if errors.shortCode}} <div class="col-sm-1 invalid" data-toggle="tooltip" {{bind-attr title="shortCodeErrors"}}></div> {{/if}}
+      </div>
+      <div class="form-group">
+        <label for="inputTechLead" class="col-sm-2 control-label">Tech Lead</label>
+        <div class="col-sm-9">
+          {{input class="form-control" id="inputTechLead" placeholder="Enter the name of the Technology Manager" value=techLead}}
+        </div>
+      </div>
+      {{#if isValid}} 
+      <button type="submit" class="btn btn-primary" {{action "saveTeam"}}>Save Team</button>
+      {{else}}
+      <button type="submit" class="btn btn-primary disabled">Save Team</button>
+      {{/if}}
+      <button type="button" class="btn btn-warning" {{action "archiveTeam"}}>Archive Team</button>
+      <button type="button" class="btn" data-toggle="collapse" data-target="#collapseTeam">Discard Changes</button>
+    </form>
+  </div>

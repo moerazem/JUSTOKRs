@@ -1,0 +1,69 @@
+<button type="button" class="btn btn-primary printHide" data-toggle="button" {{action 'toggleResponsible'}}>Show Responsibilities</button>
+<div class="spacer"></div>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th class="col-sm-1">Company Goal</th>
+      <th>Objective</th>
+      <th>Key Result</th>
+      <th>JIRA KR</th>
+      <th>Teams</th>
+      <th>RAG</th>
+      <th>Completion Horizon</th>
+      <th>Horizon History</th>
+      <th>Status</th>
+      <th class="col-sm-1">Commentary</th>
+      <th>Deliverables</th>
+      <th>Committed KR?</th>
+      <th class="printHide">Actions</th>
+      {{#if showResponsible}}
+        <th>Engineering</th>
+        <th>Product</th>
+        <th>Programme Manager</th>
+        <th>UX Design</th>
+        <th>UX Research</th>
+        <th>BI</th>
+      {{/if}}
+    </tr>
+  </thead>
+  <tbody>
+    {{#each kr in sortedKRs itemController="key-result"}}
+    <tr {{bind-attr class="kr.operational"}}>
+      <td>{{kr.companyGoal}}</td>
+      <td>{{kr.objective.name}}</td>
+      <td>{{#link-to 'keyResult' session.organisation kr.quarter.id kr.id}}{{kr.name}}{{/link-to}}</td>
+      <td>{{#if kr.jiraKR}}<a target="_blank" {{bind-attr href="kr.jiraURL"}}><span class="glyphicon glyphicon-globe"></span> {{kr.jiraKR}}</a>{{/if}}</td>
+      <td>
+        {{#each oteam in kr.teams}}
+        {{#link-to 'teamDeliverables' session.organisation kr.quarter.id oteam.id}}{{oteam.shortCode}}&nbsp;{{/link-to}}
+        {{/each}}</td>
+      <td {{bind-attr class="kr.ragColour"}}>{{kr.rag}}</td>
+      <td>{{kr.completionHorizon}}</td>
+      <td>{{view 'sparkline'}}</td>
+      <td>{{kr.status}}</td>
+      <td>{{{format-cr kr.commentary}}}</td>
+      <td>{{#link-to 'keyResult' session.organisation kr.quarter.id kr.id}}{{kr.deliverables.length}}{{/link-to}}</td>
+      <td>{{#if kr.committed}}<span class="glyphicon glyphicon-ok"></span>{{else}}<span class="glyphicon glyphicon-remove"></span>{{/if}}</td>
+      <td class="printHide">
+        <div class="btn-group actionBtnGroup" role="group" aria-label="...">
+          {{#if (can "add KeyResultUpdate")}}
+            {{#link-to 'addKeyResultUpdate' session.organisation kr.quarter.id kr.id class="btn btn-default btnAction" tagName="button" data-toggle="tooltip" title="Add Key Result Update"}}<span class="glyphicon glyphicon-arrow-up"> </span>{{/link-to}}
+          {{/if}}
+          {{#if (can "edit KeyResult")}}
+            {{#link-to 'keyResult' session.organisation kr.quarter.id kr.id (query-params edit="1") class="btn btn-default btnAction" tagName="button" data-toggle="tooltip" title="Edit Key Result"}}<span class="glyphicon glyphicon-edit"> </span>{{/link-to}}
+          {{/if}}
+        </div>
+      </td>
+      {{#if showResponsible}}
+        <td>{{kr.objective.engResp}}</td>
+        <td>{{kr.objective.productResp}}</td>
+        <td>{{kr.objective.programmeManager}}</td>
+        <td>{{kr.objective.uxDesResp}}</td>
+        <td>{{kr.objective.uxResResp}}</td>
+        <td>{{kr.objective.biResp}}</td>
+      {{/if}}
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{outlet}}

@@ -1,0 +1,71 @@
+{{outlet}}
+<h1>User {{givenName}} {{surname}}</h1>
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+    <label for="inputGivenName" class="col-sm-2 control-label">Given Name</label>
+    <div class="col-sm-9">
+      {{focus-input class="form-control" id="inputGivenName" placeholder="Enter given name" value=givenName}}
+    </div>
+    {{#if errors.givenName}} <div class="col-sm-1 invalid" data-toggle="tooltip" {{bind-attr title="givenNameErrors"}}></div> {{/if}}
+  </div>
+  <div class="form-group">
+    <label for="inputSurname" class="col-sm-2 control-label">Surname</label>
+    <div class="col-sm-9">
+      {{input class="form-control" id="inputSurname" placeholder="Enter surname" value=surname}}
+    </div>
+    {{#if errors.surname}} <div class="col-sm-1 invalid" data-toggle="tooltip" {{bind-attr title="surnameErrors"}}></div> {{/if}}
+  </div>
+  <div class="form-group">
+    <label for="inputEmail" class="col-sm-2 control-label">Email Address</label>
+    <div class="col-sm-9">
+      {{input class="form-control" id="inputEmail" placeholder="Enter email address" value=email}}
+    </div>
+    {{#if errors.email}} <div class="col-sm-1 invalid" data-toggle="tooltip" {{bind-attr title="emailErrors"}}></div> {{/if}}
+  </div>
+  <div class="form-group">
+    <label for="inputOrg" class="col-sm-2 control-label">Organisation</label>
+    <div class="col-sm-9">
+    {{view "select"
+      contentBinding="controller.orgList"
+      optionValuePath="content.id"
+      optionLabelPath="content.name"
+      selectionBinding="organisation.content"
+      prompt="Please select an organisation ..."
+      classNames="form-control"}}
+    </div>
+    {{#unless organisation.id}} <div class="col-sm-1 invalid"></div>{{/unless}}
+  </div>
+  <div class="form-group">
+    <label for="inputTeam" class="col-sm-2 control-label">Role</label>
+    <div class="col-sm-9">
+    {{view "select"
+      contentBinding="controller.roleList"
+      optionValuePath="content.id"
+      optionLabelPath="content.name"
+      selectionBinding="role.content"
+      prompt="Please select a role ..."
+      classNames="form-control"}}
+    </div>
+    {{#unless role.id}} <div class="col-sm-1 invalid"></div>{{/unless}}
+  </div>
+  <div class="form-group">
+    <label for="inputTeam" class="col-sm-2 control-label">Team</label>
+    <div class="col-sm-9">
+    {{view "select"
+      contentBinding="controller.teamList"
+      optionValuePath="content.id"
+      optionLabelPath="content.name"
+      selectionBinding="team.content"
+      prompt="Please select a team ..."
+      classNames="form-control"}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputStaffNumber" class="col-sm-2 control-label">Staff Number</label>
+    <div class="col-sm-9">
+      {{input class="form-control" id="inputStaffNumber" placeholder="Enter staff number from JUSTUS" value=staffNumber}}
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" {{action "saveUser"}}>Save User</button>
+  <button type="button" class="btn" {{action "discardUser"}}>Discard Changes</button>
+</form> 

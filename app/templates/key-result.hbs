@@ -1,0 +1,84 @@
+<h1>Objective: {{objective.name}}</h1>
+<h2 class="secondaryTitle">Key Result: {{name}}</h2>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    {{#link-to 'quarters' session.organisation}}<span class="glyphicon glyphicon-home"></span> All Quarters{{/link-to}} > {{#link-to 'objectives' session.organisation quarter.id}}{{quarter.year}} Q{{quarter.quarter}}{{/link-to}} > {{#link-to 'objectiveKeyResults' session.organisation quarter.id objective.id}}{{objective.name}}{{/link-to}} > {{name}}
+    {{#if (can "edit keyResult")}}<a data-toggle="collapse" data-parent="#accordion" href="#collapseOkr" class="pull-right"> <span class="glyphicon glyphicon-edit"></span> Edit Key Result</a>{{/if}}
+  </div>
+  <div id="collapseOkr" class="panel-collapse collapse">
+    {{view 'editKeyResult'}}
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Deliverables for this Key Result{{#if (can "add deliverable")}}<span class="pull-right">{{#link-to 'addDeliverable' session.organisation quarter.id id}}<span class="glyphicon glyphicon-plus"></span> Add Deliverable{{/link-to}}</span>{{/if}}
+  </div>
+  <div>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th class="col-md-3">Description</th>
+          <th>Status</th>
+          <th class="col-md-3">Commentary</th>
+          <th>Team</th>
+          <th>Priority</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each ditem in deliverables}}
+        <tr>
+          <td>{{#link-to 'deliverable' session.organisation quarter.id id ditem.id}}{{ditem.name}}{{/link-to}}</td>
+          <td>{{ditem.description}}</td>
+          <td>{{ditem.status}}</td>
+          <td>{{{format-cr ditem.commentary}}}</td>
+          <td>{{#link-to 'teamDeliverables' session.organisation quarter.id ditem.team.id}}{{ditem.team.shortCode}}&nbsp;{{/link-to}}</td>
+          <td>{{ditem.priority}}</td>
+          <td>
+            <div class="btn-group actionBtnGroup" role="group" aria-label="...">
+              {{#if (can "add deliverableUpdate")}}{{#link-to 'addDeliverableUpdate' session.organisation quarter.id id ditem.id class="btn btn-default btnAction" tagName="button" data-toggle="tooltip" title="Add Deliverable Update"}}<span class="glyphicon glyphicon-arrow-up"> </span>{{/link-to}}{{/if}}
+              {{#if (can "edit deliverable")}}{{#link-to 'deliverable' session.organisation quarter.id id ditem.id (query-params edit="1") class="btn btn-default btnAction" tagName="button" data-toggle="tooltip" title="Edit Deliverable"}}<span class="glyphicon glyphicon-edit"> </span>{{/link-to}}{{/if}}
+            </div>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Updates for this Key Result{{#if (can "add keyResultUpdate")}}<span class="pull-right">{{#link-to 'addKeyResultUpdate' session.organisation quarter.id id}}<span class="glyphicon glyphicon-plus"></span> Add Update{{/link-to}}</span>{{/if}}
+  </div>
+  <div>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>RAG</th>
+          <th>Status</th>
+          <th>Completion Horizon</th>
+          <th>Commentary</th>
+          {{#if (can "edit keyResultUpdate")}}<th>Actions</th>{{/if}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each oUpdate in keyResultUpdates}}
+        <tr>
+          <td>{{format-date oUpdate.updateDate}}</td>
+          <td {{bind-attr class="oUpdate.ragColour"}}>{{oUpdate.rag}}</td>
+          <td>{{oUpdate.status}}</td>
+          <td>{{oUpdate.completionHorizon}}</td>
+          <td>{{{format-cr oUpdate.commentary}}}</td>
+          {{#if (can "edit keyResultUpdate")}}<td>
+            {{#link-to 'keyResultUpdate' session.organisation quarter.id id oUpdate.id class="btn btnAction btn-default" tagName="button" data-toggle="tooltip" title="Edit Key Result Update"}}<span class="glyphicon glyphicon-edit"></span>{{/link-to}}
+          </td>{{/if}}
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
+{{outlet}}

@@ -1,0 +1,12 @@
+{{#if editing}}
+  <form>
+    {{input value=value class="priorityEdit" disabled="disabled"}}
+    <div class="btn-group actionBtnGroup" role="group" aria-label="...">
+      <button class="btn btn-default btnAction priorityBtn" data-toggle="tooltip" title="Increase Priority" {{action 'subtractOne'}}><span class="glyphicon glyphicon-arrow-up"></span></button>
+      <button class="btn btn-default btnAction priorityBtn" data-toggle="tooltip" title="Decrease Priority" {{action 'addOne'}}><span class="glyphicon glyphicon-arrow-down"></span></button>
+      <button class="btn btn-default btnAction priorityBtn" data-toggle="tooltip" title="Cancel Priority Change" {{action 'cancelEditing'}}><span class="glyphicon glyphicon-remove"></span></button>
+    </div>
+  </form>
+{{else}}
+  <button {{action "startEditing" on="click"}}>{{value}}</button>
+{{/if}}

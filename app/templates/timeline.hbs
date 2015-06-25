@@ -1,0 +1,31 @@
+<h1>Deliverable Timeline for {{session.organisation_name}}</h1>
+<div class="alert alert-info">
+  <strong>KEY:</strong>&nbsp;&nbsp;
+  <span class="countryFlag"></span> Action on country team&nbsp;&nbsp;
+  <span class="teamFlag"></span> Action on technology team&nbsp;&nbsp;
+  <span class="tlRecentStatus tlItem">Status changed in last week</span>&nbsp;&nbsp;
+  <span class="tlRecentDelivery tlItem">Released in last week</span>&nbsp;&nbsp;
+  <span class="tlBlocked tlItem">Blocked</span>&nbsp;&nbsp;
+</div>
+<div class="row">
+  <div class="col-md-2 tlTitle">Team</div>
+  <div class="col-md-2 tlTitle">Backlog</div>
+  <div class="col-md-2 tlTitle">Discovery</div>
+  <div class="col-md-2 tlTitle">In Progress</div>
+  <div class="col-md-2 tlTitle">Imminent</div>
+  <div class="col-md-2 tlTitle">Operational</div>
+</div>
+{{#each d in sortedItems}}
+<div class="row">
+  {{#if d.firstDeliverableForTeam}}<div class="col-md-12 tlLine"></div>{{/if}}
+  <div class="col-md-2" data-toggle="tooltip" {{bind-attr title="d.team.techLead"}}>{{#if d.firstDeliverableForTeam}}{{d.team.name}}{{/if}}</div>
+  <div {{bind-attr class=":col-md-2 d.offset"}} data-toggle="tooltip" {{bind-attr title="d.keyResult.name"}}>
+    <div {{bind-attr class=":tlItem d.timelineColour"}}>
+      {{#link-to 'deliverable' session.organisation d.keyResult.quarter.id d.keyResult.id d.id  (query-params referrer="timeline") data-toggle="tooltip" title="View Deliverable"}}{{d.name}}{{/link-to}}
+      {{#if d.countryFlag}}{{#link-to 'deliverable' session.organisation d.keyResult.quarter.id d.keyResult.id d.id}}<span class="countryFlag" data-toggle="tooltip" title="View deliverable history"></span>{{/link-to}}{{/if}}
+      {{#if d.teamFlag}}{{#link-to 'deliverable' session.organisation d.keyResult.quarter.id d.keyResult.id d.id}}<span class="teamFlag" data-toggle="tooltip" title="View deliverable history"></span>{{/link-to}}{{/if}}
+    </div>
+  </div>
+</div>
+{{/each}}
+{{outlet}}

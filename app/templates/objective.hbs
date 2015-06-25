@@ -1,0 +1,13 @@
+<h1>Objective: {{model.name}}
+{{#if (can "add keyResult")}}{{#link-to "addKeyResult" session.organisation quarter.id id class="btn btn-default btnAction pull-right"}}<span class="glyphicon glyphicon-plus"></span> Add Key Result{{/link-to}}{{/if}}
+</h1>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    {{#link-to "quarters"}}<span class="glyphicon glyphicon-home"></span> All Quarters{{/link-to}} > {{#link-to "objectives" session.organisation quarter.id}}{{quarter.year}} Q{{quarter.quarter}}{{/link-to}} > {{model.name}}
+    {{#if (can "edit objective")}}<a data-toggle="collapse" data-parent="#accordion" href="#collapseObjective" class="pull-right"> <span class="glyphicon glyphicon-edit"></span> Edit Objective</a>{{/if}}
+  </div>
+  <div id="collapseObjective" class="panel-collapse collapse">
+    {{view 'editObjective'}}
+  </div>
+</div>
+{{outlet}}

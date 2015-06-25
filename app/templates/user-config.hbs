@@ -1,0 +1,24 @@
+<h1>Change Organisation</h1>
+<div class="alert alert-warning">
+  <ul>
+    <li>This page allows you to change the organisation which you're viewing and see what other organisations are working on.</li>
+    <li>When viewing an organisation other than your "home" organisation you'll be in read only mode.</li>
+    <li>Once you've finished viewing other organisations you can also reset back to your "home" organisation here.</li>
+  </ul>
+</div>
+<form class="form-inline" role="form">
+  <div class="form-group">
+    <label for="inputOrg" class="control-label">Organisation</label>
+    {{view "select"
+      id=inputOrg
+      contentBinding="controller.orgList"
+      optionValuePath="content.id"
+      optionLabelPath="content.name"
+      selectionBinding="controller.organisation"
+      prompt="Please select an organisation to view ..."
+      classNames="form-control"}}
+  </div>
+  <button type="button" class="btn btn-primary" data-toggle="button" {{action 'changeOrg'}}>View Organisation</button>
+  <button type="button" class="btn" data-toggle="button" {{action 'resetOrg'}}>Reset to Home Organisation</button>
+</form>
+{{outlet}}

@@ -1,0 +1,78 @@
+<h1>Help</h1>
+
+<h2>Key Concepts</h2>
+<p><strong>Objectives</strong> are the broad functional areas where the prioritisation team (the UK prioritisation group, aided by the trio) have decided that they want to focus effort in this <strong>Quarter</strong>.</p>
+<p>Each objective can have multiple <strong>Key Results</strong>. Key results should be concrete i.e. either a measurable impact on a metric (e.g. reduce bad order rate to 1%) or a deliverable (e.g. deliver first version of restaurant management tool).  It's expected that objectives may span quarters but key results should deliver within a quarter. Each key result will be aligned with a <strong>Company Goal</strong>.</p>
+<p>Each key result may have one or more <strong>Deliverable</strong>. These will be a mix of product discovery items (which test a hypothesis) and delivery items (which build functionality).</p>
+<p>Each deliverable will have a <strong> Team</strong> assigned to it and will be prioritised against other work for the team.</p>
+<p>As the quarter progresses the teams will provide regular <strong>Updates</strong> on progress of each of their deliverables. Programme management will collate this feedback and provide a weekly summary report to the exec and UK management team on progress of the key results for each objective.</p>
+<img src="OKRapp.png" alt="Entity Relationship Diagram" class="centreImage">
+<h2>Different information for different people</h2>
+<p>The JUST OKRs app has been set up to serve a number of different sets of people - each group will probably be interested in a slightly different view of the data in the tool.  This section explains what the different sections of the tool show and who they're designed for:</p>
+<ul>
+  <li><strong>Summary</strong> This view is opened up when you start the app & shows all of the objectives and key results for the current quarter and is equivalent to the "Summary" page on the existing OKR spreadsheet.  This provides a good overview of work in progress and it's expected that this could be used by engineering management, UK or exec management and anyone who wants the big picture.  It's worth noting that only key results which have the "Show on Summary?" checkbox checked are shown in this view to focus attention on the most important initiatives.</li>
+  <li><strong>Objectives</strong> This view shows all of the objectives in the current quarter and from here you can navigate down into the key results for each objective and from there into the deliverables for each key result.  We'd expect that this view would be most useful for people who are most interested in a single objective e.g. the product workstream lead.</li>
+  <li><strong>Timeline</strong> This view shows when deliverables are expected to deliver - based upon the status supplied by the technology manager for each deliverable in their latest deliverable update.  This view is in its first iteration - more to come soon.</li>
+  <li><strong>Teams</strong> This view shows all of the teams, along with their deliverables for the current quarter.  We'd expect that this view would be most useful for engineering team members who want to see what their team have coming up.</li>
+  <li><strong>All Quarters</strong> This view shows a "Summary" like view for all quarters and can be used to show previous and future quarters.</li>
+</ul>
+<h2>Frequently Asked Questions</h2>
+<ul>
+  <li><strong>What do all the icons mean?</strong>
+    <ul>
+      <li><span class="glyphicon glyphicon-plus"></span> - Add: This will add a new item.  You'll see it in the top right hand corner of most pages and you'll also see it on the Key Result and Deliverable pages in the headers of related data.</li>
+      <li><span class="glyphicon glyphicon-edit"></span> - Edit: This will pop open a panel where you can edit the detail for the item.  You'll see this icon in the the top right of most pages to edit the main context item for that page.  You'll also see it in a number of the tables - in that context it will edit the context item for that table row.</li>
+      <li><span class="glyphicon glyphicon-arrow-up"></span> - Update: This will create a new update for either the current Key Result or Deliverable (depending on your context).  New updates contain the values from the previous update for reference.</li>
+      <li><span class="glyphicon glyphicon-globe"></span> - External Link: This shows that the associated link is to an external system - currently you'll see it on the Key Results & Team Deliverables pages linking to JIRA items for a particular deliverable.</li>
+    </ul>
+  </li>
+  <li><strong>How do I edit something?</strong> Navigate to the item and press the <span class="glyphicon glyphicon-edit"></span> Edit button in the top right hand corner and a panel will pop open showing the details of that item.</li>
+  <li><strong>How do I change the priority of something?</strong> We plan to deliver all of the key results within a quarter, however within a team it's important to understand in which order things should be worked on.  On the Team Deliverables page you'll see a prioritised list of items for the team.  To change the priority click it once and you'll see up and down arrows.  If you click up the priority for that deliverable will be increased by one and if you click down it will be reduced by one.  This process is a bit clunky and will be improved in the near future.</li>  
+  <li><strong>What do the little red dots mean?</strong> They show that the field next to the dot is mandatory.  There may also be other conditions that need to be met e.g. the field must be a number.  If you hover over the red dot next to a field you'll see some text that explains the conditions that need to be met.</li>
+  <li><strong>How do I remove something?</strong> Right now you're able to archive any item in the system (including teams, quarters etc).  A history of who has changed what is maintained, items are archived rather than deleted and it's possible to restore archived items.  However if something is no longer relevant then you can archive it as follows:
+    <ul>
+      <li>Find the item you want to archive and edit it e.g. for a Key Result - in the top right corner underneath it's name you'll see an <span class="glyphicon glyphicon-edit"></span> Edit button - press that.</li>
+      <li>A panel will pop open showing you the details of the item.  You'll see an Archive button - press that and the item will be archived.</li>
+    </ul>
+  </li>
+  <li><strong>What do the RAG colours mean?</strong> 
+    <ul>
+      <li>Red - this item is encountering problems that mean it has a high risk of not being delivered in this quarter, or it's blocked.</li>
+      <li>Amber - this item is at risk of not being delivered in this quarter and action is needed to mitigate.</li>
+      <li>Green - work on this item is on track.</li>
+    </ul>
+  </li>
+  <li><strong>What do the statuses mean?</strong> 
+    <br>Each Key Result & Deliverable will be at one of the following statuses, at any given time:
+    <ul>
+      <li>Discovery: Work is being done to determine if this item is worthy of a full scale development effort.</li>
+      <li>Backlog: Discovery & requirements are not complete for this item.  May include proof of concept work.</li>
+      <li>Ready for Dev: This work is understood, requirements have been defined, UX work completed if necessary and is ready for engineering to start work on.</li>
+      <li>In Progress: This item is actively being worked on by engineering. The item will stay in this status through development, testing, trialling and until full deployment has been completed.</li>
+      <li>Blocked: Work on this item cannot continue until an obstacle has been removed - if the obstacle is work dependant on a different team then it is highlighted in the commentary.</li>
+      <li>Deployed: This item has been deployed but is not fully operational.</li>
+      <li>Operational: This item is 100% in use by users or end consumers, who have received all necessary training, handover is complete.</li>
+    </ul>
+    Items will generally progress from: Discovery <span class="glyphicon glyphicon-chevron-right"></span> Backlog <span class="glyphicon glyphicon-chevron-right"></span> Ready for Dev <span class="glyphicon glyphicon-chevron-right"></span> Blocked <span class="glyphicon glyphicon-chevron-right"></span> Deployed <span class="glyphicon glyphicon-chevron-right"></span> Operational 
+    <br>Items may become Blocked at any time after going In Progress.
+    <br>You can see the history of status changes for each Key Result & Deliverable in the detail page for that item.
+  </li>
+  <li><strong>What does the completion horizon represent?</strong> 
+    <br>The completion horizon is our current best understanding of when this key result will be delivered and is our way of balancing the reality of development uncertainty with the need of the business to prepare for new features.  We expect this to change as more information becomes available and to become less volatile as a project progresses.  The horizon history shows the historical values for the completion horizon and shows whether:
+    <ul>
+      <li>The horizon is trending downwards - we're moving forward to completion as expected.</li>
+      <li>The horizon is plateauing - perhaps extra complexity is being discovered.</li>
+      <li>The horizon is increasing - we'd expect to see this at the start of work on an item, if it's happening later in the lifecycle it may be a cause for concern.</li>  
+    </ul>
+  </li>
+</ul>
+<h2>Release Notes</h2>
+  {{#each versionUpdate in model}}
+  <h3>{{versionUpdate.name}} : {{format-date versionUpdate.releaseDate}}</h3>
+  <p>{{{versionUpdate.description}}}</p>
+  {{/each}}
+<h2>Known Issues</h2>
+<ul>
+  <li>Please let one of the programme managers know if you encounter any issues.</li>
+</ul>
+{{outlet}}

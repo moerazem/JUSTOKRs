@@ -1,0 +1,56 @@
+    <div class="panel-body">
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="inputCompanyGoal" class="col-sm-2 control-label">Company Goal</label>
+          <div class="col-sm-9">
+          {{view "select"
+            content=controllers.application.companyGoal
+            selection=companyGoal
+            prompt="Please select a company goal ..."
+            classNames="form-control"}}
+          </div>
+          {{#if errors.companyGoal}} <div class="col-sm-1 invalid" data-toggle="tooltip" {{bind-attr title="companyGoalErrors"}}></div> {{/if}}
+        </div>
+        <div class="form-group">
+          <label for="inputKeyResult" class="col-sm-2 control-label">Key Result</label>
+          <div class="col-sm-9">
+            {{focus-input class="form-control" id="inputKeyResult" placeholder="Enter Key Result name" value=name}}
+          </div>
+          {{#if errors.name}} <div class="col-sm-1 invalid" data-toggle="tooltip" {{bind-attr title="nameErrors"}}></div> {{/if}}
+        </div>
+        <div class="form-group">
+          <label for="inputJiraKR" class="col-sm-2 control-label">JIRA KR</label>
+          <div class="col-sm-7">
+            {{input class="form-control" id="inputJiraKR" placeholder="Enter JIRA Key Result" value=jiraKR}}
+          </div>
+          {{#if jiraKR}}<div class="col-sm-2"><a target="_blank" {{bind-attr href="jiraURL"}}><span class="glyphicon glyphicon-globe"></span> {{jiraKR}}</a></div>{{/if}}
+        </div>
+        <div class="form-group">
+          <label for="inputDocLink" class="col-sm-2 control-label">Link to documentation</label>
+          <div class="col-sm-7">
+            {{input class="form-control" id="inputDocLink" placeholder="Enter the link for any documentation for this KR - in the wiki, JIRA, Google Docs, the web..." value=docLink}}
+          </div>
+          {{#if docLink}}<div class="col-sm-2"><a target="_blank" {{bind-attr href="docLink"}}><span class="glyphicon glyphicon-globe"></span> {{docLink}}</a></div>{{/if}}
+        </div>
+        <div class="form-group">
+          <label for="inputRisks" class="col-sm-2 control-label">Risks</label>
+          <div class="col-sm-9">
+            {{textarea class="form-control" rows="3" id="inputRisks" placeholder="List the risks associated with this Key Result" value=risks}}
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Committed for this Quarter?</label>
+          <div class="col-sm-4">
+            {{input type="checkbox" name="committed" checked=committed}}
+          </div>
+        </div>
+        {{#if isValid}} 
+        <button type="submit" class="btn btn-primary" {{action "saveKeyResult"}}>Save Key Result</button>
+        {{else}}
+        <button type="submit" class="btn btn-primary disabled">Save Key Result</button>
+        {{/if}}
+        <button type="button" class="btn btn-warning" {{action "archiveKeyResult"}}>Archive Key Result</button>
+        <button type="button" class="btn" data-toggle="collapse" data-target="#collapseOkr">Discard Changes</button>
+      </form>
+    </div>
+{{outlet}}

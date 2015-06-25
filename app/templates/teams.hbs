@@ -1,0 +1,27 @@
+<h1>Team Deliverables for {{session.organisation_name}} in {{quarter.year}} Q{{quarter.quarter}}</h1>
+<div class="panel panel-default">
+  <div class="panel-heading">{{#link-to "quarters" session.organisation}}<span class="glyphicon glyphicon-home"></span> All Quarters{{/link-to}} > {{#link-to 'objectives' session.organisation quarter.id}}{{quarter.year}} Q{{quarter.quarter}}{{/link-to}} > Teams
+    {{#if (can "add team")}}<span class="pull-right">{{#link-to 'addTeam' session.organisation quarter.id}}<span class="glyphicon glyphicon-plus"></span> Add Team{{/link-to}}</span>{{/if}}
+  </div>
+</div>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Short Code</th>
+      <th>Technology Manager</th>
+      <th>Deliverables</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each team in content}}
+    <tr>
+      <td>{{#link-to 'teamDeliverables' session.organisation quarter.id team.id}}{{team.name}}{{/link-to}}</td>
+      <td>{{team.shortCode}}</td>
+      <td>{{team.techLead}}</td>
+      <td>{{#link-to 'teamDeliverables' session.organisation quarter.id team.id}}{{team.deliverables.length}}{{/link-to}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{outlet}}

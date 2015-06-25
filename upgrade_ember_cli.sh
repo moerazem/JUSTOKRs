@@ -1,0 +1,10 @@
+cp Brocfile.js Brocfile.js.old
+cp bower.json bower.json.old
+cp package.json package.json.old
+cp app/app.js app/app.js.old
+cp app/index.html app/index.html.old
+cp app/router.js app/router.js.old
+cp app/templates/application.hbs app/templates/application.hbs.old
+cp config/environment.js config/environment.js.old
+cp .gitignore .gitignore.old
+cp .jshintrc .jshintrc.old
