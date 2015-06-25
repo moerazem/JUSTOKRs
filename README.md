@@ -23,15 +23,15 @@ You will need the following things properly installed on your computer.
 ## Running / Development
 
 * Set up the following environment variables (e.g. in your .bash_profile)
-  export OKR_HOME="/Users/user.name" NB. it's assumed that the OKR source code will sit in a folder called /src/okr under this path
-  export OKR_EMBER="https://localhost:4200" - the URL of the Ember server
-  export OKR_EMBER="http://localhost:3000" - the URL of the Node server
-  export OKR_DB_HOST="localhost"
-  export OKR_DB_DB="okr"
-  export OKR_DB_USER="okr"
-  export OKR_DB_PASS="somethingHardToGuess"
-  export OKR_AD_REDIRECT=Full URL to redirect to after login
-  export OKR_JIRA=URL to your JIRA install (if you have one)
+  * export OKR_HOME="/Users/user.name" NB. it's assumed that the OKR source code will sit in a folder called /src/okr under this path
+  * export OKR_EMBER="https://localhost:4200" - the URL of the Ember server
+  * export OKR_EMBER="http://localhost:3000" - the URL of the Node server
+  * export OKR_DB_HOST="localhost"
+  * export OKR_DB_DB="okr"
+  * export OKR_DB_USER="okr"
+  * export OKR_DB_PASS="somethingHardToGuess"
+  * export OKR_AD_REDIRECT=Full URL to redirect to after login
+  * export OKR_JIRA=URL to your JIRA install (if you have one)
 * `ember server`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
