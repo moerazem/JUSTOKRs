@@ -100,6 +100,4 @@ server.get('/organisations/:id', apiOrganisation.getOrganisation);
 server.get('/roles', apiRole.getRoles);
 server.get('/roles/:id', apiRole.getRole);
 
-server.get('/jiras', apiJira.getJiras);
-
 server.get('/versionUpdates', apiVersionUpdate.getVersionUpdates);
