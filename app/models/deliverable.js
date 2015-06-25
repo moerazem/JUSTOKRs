@@ -68,7 +68,7 @@ var Deliverable = DS.Model.extend({
         deliveryDate     = moment(this.get('deliveryDate')),
         status           = this.get('status'), 
         colour           = 'tlNormal';
-    if (statusChangeDate.subtract(7, 'days') <= moment() ) {
+    if (statusChangeDate >= moment().subtract(7, 'days') ) {
       colour = 'tlRecentStatus';
     }
     if (deliveryDate <= moment() && deliveryDate >= moment().subtract(7, 'days') && deliveryDate.isValid() && (status === 'Deployed' || status === 'Operational')) {
