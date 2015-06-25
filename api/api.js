@@ -14,7 +14,6 @@ var   common               = require('./common'),
       apiDeliverable       = require('./api_deliverable'),
       apiDeliverableUpdate = require('./api_deliverable_update'),
       apiVersionUpdate     = require('./api_version_update'),
-      apiJira              = require('./api_jira'),
       fs                   = require('fs'),
       moment               = require('moment'),
       schedule             = require('node-schedule');
