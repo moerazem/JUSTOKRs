@@ -32,7 +32,7 @@ exports.getAllQuarters = function (cb) {
       return cb(err);
     }
     let query = "select id, year, quarter from quarter order by year, quarter";
-    connection.query(query, data, function(err, rows){
+    connection.query(query, function(err, rows){
       if(err) {
         log.error(err);
         connection.release();
