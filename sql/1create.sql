@@ -1,9 +1,9 @@
 -- create database okr;
 -- use okr;
--- create user 'gordon'@'localhost' identified by 'gordon';
--- grant all privileges on modus.* to gordon@localhost;
--- grant super on *.* to gordon@localhost;
--- grant file on *.* to gordon@localhost;
+-- create user 'okr'@'localhost' identified by 'okr';
+-- grant all privileges on modus.* to okr@localhost;
+-- grant super on *.* to okr@localhost;
+-- grant file on *.* to okr@localhost;
 -- flush privileges;
 
 drop table quarter;
@@ -58,6 +58,7 @@ create table keyResult (
   krType          varchar(100),
   companyGoal     varchar(100),
   committed       boolean default true,  
+  capitalisable   boolean,  
   jiraKR          varchar(500),
   risks           varchar(2000),
   docLink         varchar(200),
@@ -128,15 +129,16 @@ drop table organisation;
 create table organisation (
   id   integer not null auto_increment,
   name varchar(100),
-  primary key (id),
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  primary key (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+;
 
 drop table role;
 
 create table role (
   id   integer not null auto_increment,
   name varchar(100),
-  primary key (id),
+  primary key (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 drop table user;
@@ -158,31 +160,12 @@ create table user (
   unique (name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+drop table versionUpdate;
+
 create table versionUpdate (
   id          integer       not null,
   name        varchar(200)  not null,
   description varchar(5000) not null,
   releaseDate date,
   primary key (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-create table userWeekKeyResult (
-  id             integer,
-  weekCommencing date,
-  quarter        integer,
-  user           integer,
-  team           integer,
-  keyResult      integer,
-  primary key (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-create table jira (
-  id             varchar(100),
-  project        varchar(100),
-  keyResult      varchar(100),
-  assignee       varchar(100),
-  implementedBy  varchar(100),
-  resolutionDate date,
-  status         varchar(100),
-  primary        key (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

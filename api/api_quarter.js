@@ -20,7 +20,6 @@ exports.getQuarters = function (req, res, next) {
     function(user, cb) { // get data from DB
       let quarters    = { quarters: [] };
       if (user) {
-        self.log.info({params: req.params});
         if (req.params.organisation) {
           let fields = [req.params.organisation];
         

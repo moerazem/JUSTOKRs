@@ -139,7 +139,7 @@ exports.verifyToken = function (token, cb) {
     var tokenExp = moment(user.tokenExp).format('YYYY-MM-DD'),
         timeNow  = moment().format('YYYY-MM-DD');
     if (timeNow > tokenExp) { // if the token was issued by ADFS more than a day ago
-      log.info('token has expired'); 
+      log.info({user: user}, 'token has expired'); 
       return cb(new apiCommon.restify.InvalidCredentialsError('Expired token'), null);
     }
     var scope = 'all';

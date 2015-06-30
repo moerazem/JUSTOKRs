@@ -25,7 +25,7 @@ exports.getQuarters = function (data, cb) {
   });
 };
 
-exports.getAllQuarters = function (data, cb) {
+exports.getAllQuarters = function (cb) {
   pool.getConnection(function(err, connection) {
     if (err) {
       log.error(err);

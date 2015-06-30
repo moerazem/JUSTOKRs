@@ -227,7 +227,6 @@ exports.putKeyResult = function (req, res, next) {
       })(req, res, next);
     },
     function(user, cb) { // update DB
-      log.info('top of update');
       if (user) {
         let fields = [ req.params.keyResult,
                        req.params.id ];
@@ -246,7 +245,6 @@ exports.putKeyResult = function (req, res, next) {
   ],
   function(err, result) {
     if (err) {
-      log.info('top of error');
       self.log.error(err);
       return next(err);
     }

@@ -1,7 +1,13 @@
-# Okr
+# JUST OKRs
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This is the JUSTOKRs application - it's an webapp to help large distributed teams manage & track their progress.  
+
+It's has three tiers:
+* Ember.js web app
+* Node.js APIs
+* MySQL database
+
+This README outlines the details of starting to work with this app and collaborating on it.
 
 ## Prerequisites
 
@@ -11,7 +17,6 @@ You will need the following things properly installed on your computer.
 * [Node.js](http://nodejs.org/) (with NPM)
 * [Bower](http://bower.io/)
 * [Ember CLI](http://www.ember-cli.com/)
-* [PhantomJS](http://phantomjs.org/)
 
 ## Installation
 
@@ -19,6 +24,10 @@ You will need the following things properly installed on your computer.
 * change into the new directory
 * `npm install`
 * `bower install`
+* cp -r manual_install/* bower_components
+* Set your database up - either
+  * Create the DB yourself by running /sql/1create.sql & 2views.sql
+  * Load the sample database using MySQLWorkbench
 
 ## Running / Development
 
@@ -32,6 +41,7 @@ You will need the following things properly installed on your computer.
   * export OKR_DB_PASS="somethingHardToGuess"
   * export OKR_AD_REDIRECT=Full URL to redirect to after login
   * export OKR_JIRA=URL to your JIRA install (if you have one)
+* create a /log folder
 * `ember server`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
