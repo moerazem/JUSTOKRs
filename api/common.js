@@ -7,7 +7,7 @@ exports.emberIP             = emberIP;
 
 // constants that will need to be changed infrequently
 exports.latestVersion       = 16; // id from versionUpdate table
-exports.currentQuarter      = 3; // Q2 2015
+exports.currentQuarter      = 6; // Q2 2015
 
 // same for all environments
 exports.httpsKey            = home + '/src/okr/je-labs.com-privatekey.cer';
