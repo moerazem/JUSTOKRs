@@ -1,5 +1,5 @@
 <h1>Objective: {{model.name}}
-{{#if (can "add keyResult")}}{{#link-to "addKeyResult" session.organisation quarter.id id class="btn btn-default btnAction pull-right"}}<span class="glyphicon glyphicon-plus"></span> Add Key Result{{/link-to}}{{/if}}
+{{#if (can "add keyResult")}}{{#link-to "addKeyResult" session.organisation quarter.id id (query-params referrer="objective") class="btn btn-default btnAction pull-right"}}<span class="glyphicon glyphicon-plus"></span> Add Key Result{{/link-to}}{{/if}}
 </h1>
 <div class="panel panel-default">
   <div class="panel-heading">

@@ -1,5 +1,5 @@
 <h1>Objectives & Key Results for {{session.organisation_name}} in {{year}} Q{{quarter}}
-{{#if (can "add keyResult")}}{{#link-to "addKeyResult" session.organisation id 0 class="btn btn-default btnAction pull-right printHide"}}<span class="glyphicon glyphicon-plus"></span> Add Key Result{{/link-to}}{{/if}}
+{{#if (can "add keyResult")}}{{#link-to "addKeyResult" session.organisation id 0 (query-params referrer="quarter") class="btn btn-default btnAction pull-right printHide"}}<span class="glyphicon glyphicon-plus"></span> Add Key Result{{/link-to}}{{/if}}
 </h1>
 <div class="panel panel-default">
   <div class="panel-heading printHide">

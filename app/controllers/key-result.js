@@ -5,8 +5,9 @@ export default Ember.ObjectController.extend(
   EmberValidations.Mixin,
   {
     needs: ["application"],
-    queryParams: ['edit'],
+    queryParams: ['edit', 'referrer'],
     edit: 0,
+    referrer: '',
     nameErrors: function() {
       var errors = this.get('errors.name').toString();
       if (errors) { return errors[0].toUpperCase() + errors.slice(1); } else { return null; }
@@ -25,7 +26,11 @@ export default Ember.ObjectController.extend(
         var self = this;
         if (this.get('isValid')) {
           var onSuccess = function(record) {
-            self.transitionToRoute('objectiveKeyResults', self.get('session.organisation'), record.get('quarter.id'), record.get('objective.id'));
+            if (self.get('referrer') === 'objective-key-results') {
+              self.transitionToRoute('objectiveKeyResults', self.get('session.organisation'), record.get('quarter.id'), record.get('objective.id'));
+            } else {
+              self.transitionToRoute('keyResults', self.get('session.organisation'), record.get('quarter.id'));
+            }
           };
 
           var onFail = function() {

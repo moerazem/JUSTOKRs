@@ -74,7 +74,7 @@ export default Ember.ObjectController.extend(
             if (self.get('referrer') === 'timeline') {
               self.transitionToRoute('timeline', self.get('session.organisation'), record.get('deliverable.keyResult.quarter.id'));
             } else {
-              if (record.get('deliverable.team.id')) {
+              if (record.get('deliverable.team.id') && (self.get('referrer') === 'team-deliverables')) {
                 self.transitionToRoute('teamDeliverables', self.get('session.organisation'), record.get('deliverable.keyResult.quarter.id'), record.get('deliverable.team.id'));
               } else {
                 self.transitionToRoute('deliverable', self.get('session.organisation'), record.get('deliverable.keyResult.quarter.id'), record.get('deliverable.keyResult.id'), record.get('deliverable.id'));
@@ -95,6 +95,8 @@ export default Ember.ObjectController.extend(
         model.deleteRecord();
         if (this.get('referrer') === 'timeline') {
           this.transitionToRoute('timeline', this.get('session.organisation'), this.get('deliverable.keyResult.quarter.id'));
+        } else if (this.get('referrer') === 'team-deliverables') {
+          this.transitionToRoute('teamDeliverables', this.get('session.organisation'), this.get('deliverable.keyResult.quarter.id'), this.get('deliverable.team.id'));
         } else {
           this.transitionToRoute('deliverable', this.get('session.organisation'), this.get('deliverable.keyResult.quarter.id'), this.get('deliverable.keyResult.id'), this.get('deliverable.id'));
         }

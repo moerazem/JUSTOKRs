@@ -35,7 +35,7 @@
       <td class="printHide">
         <div class="btn-group actionBtnGroup" role="group" aria-label="...">
           {{#if (can "add deliverableUpdate")}}
-            {{#link-to 'addDeliverableUpdate' session.organisation d.keyResult.quarter.id d.keyResult.id d.id class="btn btn-default btnAction" tagName="button" data-toggle="tooltip" title="Add Deliverable Update"}}<span class="glyphicon glyphicon-arrow-up"> </span>{{/link-to}}
+            {{#link-to 'addDeliverableUpdate' session.organisation d.keyResult.quarter.id d.keyResult.id d.id (query-params referrer="team-deliverables") class="btn btn-default btnAction" tagName="button" data-toggle="tooltip" title="Add Deliverable Update"}}<span class="glyphicon glyphicon-arrow-up"> </span>{{/link-to}}
           {{/if}}
           {{#if (can "edit deliverable")}}
             {{#link-to 'deliverable' session.organisation d.keyResult.quarter.id d.keyResult.id d.id (query-params edit="1") class="btn btn-default btnAction" tagName="button" data-toggle="tooltip" title="Edit Deliverable"}}<span class="glyphicon glyphicon-edit"></span>{{/link-to}}

@@ -8,14 +8,8 @@
   <thead>
     <tr>
       <th>Objective Type</th>
-      <th class="col-sm-2">Name</th>
-      <th class="col-sm-2">Description</th>
-      <th>Programme Manager</th>
-      <th>Engineering</th>
-      <th>Product</th>
-      <th>UX Design</th>
-      <th>UX Research</th>
-      <th>Business Intelligence</th>
+      <th>Name</th>
+      <th>Description</th>
       <th>KRs</th>
     </tr>
   </thead>
@@ -25,12 +19,6 @@
       <td>{{objective.objectiveType}}</td>
       <td>{{#link-to 'objectiveKeyResults' session.organisation quarter.id objective.id}}{{objective.name}}{{/link-to}}</td>
       <td>{{#link-to 'objectiveKeyResults' session.organisation quarter.id objective.id}}{{objective.description}}{{/link-to}}</td>
-      <td>{{objective.programmeManager}}</td>
-      <td>{{objective.engResp}}</td>
-      <td>{{objective.productResp}}</td>
-      <td>{{objective.uxDesResp}}</td>
-      <td>{{objective.uxResResp}}</td>
-      <td>{{objective.biResp}}</td>
       <td>{{#link-to 'objectiveKeyResults' session.organisation quarter.id objective.id}}{{objective.keyResults.length}} KRs{{/link-to}}</td>
     </tr>
     {{/each}}

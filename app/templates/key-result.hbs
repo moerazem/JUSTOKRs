@@ -50,7 +50,7 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    Updates for this Key Result{{#if (can "add keyResultUpdate")}}<span class="pull-right">{{#link-to 'addKeyResultUpdate' session.organisation quarter.id id}}<span class="glyphicon glyphicon-plus"></span> Add Update{{/link-to}}</span>{{/if}}
+    Updates for this Key Result{{#if (can "add keyResultUpdate")}}<span class="pull-right">{{#link-to 'addKeyResultUpdate' session.organisation quarter.id id (query-params referrer="key-result") }}<span class="glyphicon glyphicon-plus"></span> Add Update{{/link-to}}</span>{{/if}}
   </div>
   <div>
     <table class="table table-striped table-bordered">

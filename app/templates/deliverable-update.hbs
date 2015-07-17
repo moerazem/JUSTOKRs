@@ -4,7 +4,7 @@
     <span>{{#link-to 'quarters' session.organisation}}<span class="glyphicon glyphicon-home"></span> All Quarters{{/link-to}} > {{#link-to 'objectives' session.organisation deliverable.keyResult.quarter.id}}{{deliverable.keyResult.quarter.year}} Q{{deliverable.keyResult.quarter.quarter}}{{/link-to}} > {{#link-to 'keyResult' session.organisation deliverable.keyResult.quarter.id deliverable.keyResult.id}}{{deliverable.keyResult.objective.name}}: {{deliverable.keyResult.name}}{{/link-to}} > {{#link-to 'deliverable' session.organisation deliverable.keyResult.quarter.id deliverable.keyResult.id deliverable.id}}{{deliverable.name}}{{/link-to}} > Update</span>
   </div>
   <div class="panel-body">
-    {{#unless id}}<div class="alert alert-warning">All of the values below apart from the update date have been pre-populated with the values from the previous status update for reference. Please change them to the appropriate values for this update.</div>{{/unless}}
+    {{#unless id}}<div class="alert alert-warning">Deliverable Updates should be used by technology managers to update the rest of the organisation on the progress of their team deliverables, programme managers will use these updates to provide updates on Key Results.<br>All of the values below apart from the update date have been pre-populated with the values from the previous status update for reference. Please change them to the appropriate values for this update.</div>{{/unless}}
     <form class="form-horizontal" role="form">
       <div class="form-group">
         <label for="inputUpdateDate" class="col-sm-2 control-label">Update Date</label>

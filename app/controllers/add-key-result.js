@@ -4,6 +4,8 @@ export default Ember.ObjectController.extend(
   EmberValidations.Mixin,
   {
     needs: "application",
+    queryParams: ['referrer'],
+    referrer: '',
     objectives: '',
     nameErrors: function() {
       var errors = this.get('errors.name').toString();
@@ -30,7 +32,13 @@ export default Ember.ObjectController.extend(
             var model = self.get('model');
 
             var onSuccess = function(record) {
-              self.transitionToRoute('objectiveKeyResults', self.get('session.organisation'), record.get('quarter.id'), record.get('objective.id'));
+              if (self.get('referrer') === 'objective') {
+                self.transitionToRoute('objectiveKeyResults', self.get('session.organisation'), record.get('quarter.id'), record.get('objective.id'));
+              } else if (self.get('referrer') === 'quarters') {
+                self.transitionToRoute('quarters', self.get('session.organisation'));
+              } else {
+                self.transitionToRoute('keyResults', self.get('session.organisation'), record.get('quarter.id'));
+              }
             };
 
             var onFail = function() {
@@ -46,13 +54,20 @@ export default Ember.ObjectController.extend(
       discardKeyResult: function() {
         var model = this.get('model');
         model.deleteRecord();
-        if (this.get('objective.id') && this.get('quarter.id')) {
+        if (this.get('referrer') === 'objective') {
           this.transitionToRoute('objectiveKeyResults', this.get('session.organisation'), this.get('quarter.id'), this.get('objective.id'));
-        } else if (this.get('quarter.id')) {
-          this.transitionToRoute('keyResults', this.get('session.organisation'), this.get('quarter.id'));
+        } else if (this.get('referrer') === 'quarters') {
+          this.transitionToRoute('quarters', this.get('session.organisation'));
         } else {
-          this.transitionToRoute('summary', this.get('session.organisation'), this.get('session.quarter'));
+          this.transitionToRoute('keyResults', this.get('session.organisation'), this.get('quarter.id'));
         }
+        // if (this.get('objective.id') && this.get('quarter.id')) {
+        //   this.transitionToRoute('objectiveKeyResults', this.get('session.organisation'), this.get('quarter.id'), this.get('objective.id'));
+        // } else if (this.get('quarter.id')) {
+        //   this.transitionToRoute('keyResults', this.get('session.organisation'), this.get('quarter.id'));
+        // } else {
+        //   this.transitionToRoute('summary', this.get('session.organisation'), this.get('session.quarter'));
+        // }
       }
     }
   }

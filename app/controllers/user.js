@@ -38,7 +38,7 @@ export default Ember.ObjectController.extend(
       saveUser: function() {  
         var self = this;
         if (this.get('isValid')) {
-          if (self.get('organisation.id') && self.get('role.id')) {
+          if (self.get('organisation.id')) {
             var onSuccess = function() {
               self.transitionToRoute('users');
             };
@@ -52,7 +52,7 @@ export default Ember.ObjectController.extend(
             self.get('model').set('name', self.get('email'));
             self.get('model').save().then(onSuccess).catch(onFail);
           } else { // hacky workaround due to inability to validate objective, which is a belongsTo relationship
-            self.notify.alert('Need to supply organisation & role');
+            self.notify.alert('Need to supply organisation');
           }
         }
       },

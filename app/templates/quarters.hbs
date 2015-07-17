@@ -1,6 +1,6 @@
 <h1>All Quarters
 {{#if (can "add quarter")}}{{#link-to 'addQuarter' session.organisation class="btn btn-default btnAction pull-right"}}<span class="glyphicon glyphicon-plus"> </span> Add Quarter{{/link-to}}{{/if}}
-{{#if (can "add keyResult")}}{{#link-to "addKeyResult" session.organisation 0 0 class="btn btn-default btnAction pull-right"}}<span class="glyphicon glyphicon-plus"></span> Add Key Result{{/link-to}}{{/if}}
+{{#if (can "add keyResult")}}{{#link-to "addKeyResult" session.organisation 0 0 (query-params referrer="quarters") class="btn btn-default btnAction pull-right"}}<span class="glyphicon glyphicon-plus"></span> Add Key Result{{/link-to}}{{/if}}
 </h1>
 <div class="spacer"></div>
 <table class="table table-striped table-bordered">

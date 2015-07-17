@@ -21,7 +21,7 @@
   <div class="col-md-2" data-toggle="tooltip" {{bind-attr title="d.team.techLead"}}>{{#if d.firstDeliverableForTeam}}{{d.team.name}}{{/if}}</div>
   <div {{bind-attr class=":col-md-2 d.offset"}} data-toggle="tooltip" {{bind-attr title="d.keyResult.name"}}>
     <div {{bind-attr class=":tlItem d.timelineColour"}}>
-      {{#link-to 'deliverable' session.organisation d.keyResult.quarter.id d.keyResult.id d.id  (query-params referrer="timeline") data-toggle="tooltip" title="View Deliverable"}}{{d.name}}{{/link-to}}
+      {{#link-to 'deliverable' session.organisation d.keyResult.quarter.id d.keyResult.id d.id (query-params referrer="timeline") data-toggle="tooltip" title="View Deliverable"}}{{d.name}}{{/link-to}}
       {{#if d.countryFlag}}{{#link-to 'deliverable' session.organisation d.keyResult.quarter.id d.keyResult.id d.id}}<span class="countryFlag" data-toggle="tooltip" title="View deliverable history"></span>{{/link-to}}{{/if}}
       {{#if d.teamFlag}}{{#link-to 'deliverable' session.organisation d.keyResult.quarter.id d.keyResult.id d.id}}<span class="teamFlag" data-toggle="tooltip" title="View deliverable history"></span>{{/link-to}}{{/if}}
     </div>
