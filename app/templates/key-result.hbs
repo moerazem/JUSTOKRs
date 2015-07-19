@@ -38,7 +38,7 @@
           <td>
             <div class="btn-group actionBtnGroup" role="group" aria-label="...">
               {{#if (can "add deliverableUpdate")}}{{#link-to 'addDeliverableUpdate' session.organisation quarter.id id ditem.id class="btn btn-default btnAction" tagName="button" data-toggle="tooltip" title="Add Deliverable Update"}}<span class="glyphicon glyphicon-arrow-up"> </span>{{/link-to}}{{/if}}
-              {{#if (can "edit deliverable")}}{{#link-to 'deliverable' session.organisation quarter.id id ditem.id (query-params edit="1") class="btn btn-default btnAction" tagName="button" data-toggle="tooltip" title="Edit Deliverable"}}<span class="glyphicon glyphicon-edit"> </span>{{/link-to}}{{/if}}
+              {{#if (can "edit deliverable")}}{{#link-to 'deliverable' session.organisation quarter.id id ditem.id (query-params edit="1" referrer="key-result") class="btn btn-default btnAction" tagName="button" data-toggle="tooltip" title="Edit Deliverable"}}<span class="glyphicon glyphicon-edit"> </span>{{/link-to}}{{/if}}
             </div>
           </td>
         </tr>

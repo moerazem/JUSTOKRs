@@ -40,7 +40,11 @@ export default Ember.ObjectController.extend(
         if (this.get('isValid')) {
           if (self.get('team.id') && self.get('keyResult.id')) {
             var onSuccess = function(record) {
-              self.transitionToRoute('keyResult', self.get('session.organisation'), record.get('keyResult.quarter.id'), record.get('keyResult.id'));
+              if (self.get('referrer') === 'key-result') {
+                self.transitionToRoute('keyResult', self.get('session.organisation'), record.get('keyResult.quarter.id'), record.get('keyResult.id'));
+              } else {
+                self.transitionToRoute('teamDeliverables', self.get('session.organisation'), record.get('keyResult.quarter.id'), record.get('team.id'));
+              }
             };
 
             var onFail = function(error) {
