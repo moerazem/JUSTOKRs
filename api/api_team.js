@@ -71,6 +71,9 @@ exports.getTeams = function (req, res, next) {
                       name:             teamD.name,
                       shortCode:        teamD.shortCode,
                       techLead:         teamD.techLead,
+                      productManager:   teamD.productManager,
+                      uxDesigner:       teamD.uxDesigner,
+                      programmeManager: teamD.programmeManager,
                       organisation:     teamD.organisation,
                       deliverables:     dIds };
         teams.teams[i] = teamF;
@@ -115,6 +118,9 @@ exports.getTeam = function (req, res, next) {
                         name:             teamD.name,
                         shortCode:        teamD.shortCode,
                         techLead:         teamD.techLead,
+                        productManager:   teamD.productManager,
+                        uxDesigner:       teamD.uxDesigner,
+                        programmeManager: teamD.programmeManager,
                         organisation:     teamD.organisation,
                         deliverables:     dIds };
           team.team = teamF;

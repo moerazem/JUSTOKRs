@@ -25,6 +25,24 @@
           {{input class="form-control" id="inputTechLead" placeholder="Enter the name of the Technology Manager" value=techLead}}
         </div>
       </div>
+      <div class="form-group">
+        <label for="inputProductManager" class="col-sm-2 control-label">Product Manager</label>
+        <div class="col-sm-9">
+          {{input class="form-control" id="inputProductManager" placeholder="Enter the name of the Product Manager" value=productManager}}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputUXDesigner" class="col-sm-2 control-label">UX Designer</label>
+        <div class="col-sm-9">
+          {{input class="form-control" id="inputUXDesigner" placeholder="Enter the name of the UX Designer" value=uxDesigner}}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputProgrammeManager" class="col-sm-2 control-label">Programme Manager</label>
+        <div class="col-sm-9">
+          {{input class="form-control" id="inputProgrammeManager" placeholder="Enter the name of the Programme Manager" value=programmeManager}}
+        </div>
+      </div>
       {{#if isValid}} 
       <button type="submit" class="btn btn-primary" {{action "saveTeam"}}>Save Team</button>
       {{else}}

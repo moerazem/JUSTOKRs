@@ -10,6 +10,9 @@
       <th>Name</th>
       <th>Short Code</th>
       <th>Technology Manager</th>
+      <th>Product Manager</th>
+      <th>UX Designer</th>
+      <th>Programme Manager</th>
       <th>Deliverables</th>
     </tr>
   </thead>
@@ -19,6 +22,9 @@
       <td>{{#link-to 'teamDeliverables' session.organisation quarter.id team.id}}{{team.name}}{{/link-to}}</td>
       <td>{{team.shortCode}}</td>
       <td>{{team.techLead}}</td>
+      <td>{{team.productManager}}</td>
+      <td>{{team.uxDesigner}}</td>
+      <td>{{team.programmeManager}}</td>
       <td>{{#link-to 'teamDeliverables' session.organisation quarter.id team.id}}{{team.deliverables.length}}{{/link-to}}</td>
     </tr>
     {{/each}}
