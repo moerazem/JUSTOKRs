@@ -6,7 +6,7 @@ let emberIP                 = process.env.OKR_EMBER.split();
 exports.emberIP             = emberIP;
 
 // constants that will need to be changed infrequently
-exports.latestVersion       = 16; // id from versionUpdate table
+exports.latestVersion       = 17; // id from versionUpdate table
 exports.currentQuarter      = 6; // Q2 2015
 
 // same for all environments

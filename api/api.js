@@ -20,7 +20,7 @@ var   common               = require('./common'),
 
 var serverOptions  = {
   name        : 'okr', 
-  version     : "1.7.4"
+  version     : "1.7.5"
 };
 
 const server = apiCommon.restify.createServer(serverOptions);
