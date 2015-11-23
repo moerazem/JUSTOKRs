@@ -2,7 +2,9 @@
 var   common               = require('./common'),
       log                  = common.log,
       apiCommon            = require('./api_common'),
+      apiAuth              = require('./api_auth'),
       apiAuthAdfs          = require('./api_auth_adfs'),
+      apiAuthEsa           = require('./api_auth_esa'),
       apiQuarter           = require('./api_quarter'),
       apiObjective         = require('./api_objective'),
       apiTeam              = require('./api_team'),
@@ -20,7 +22,7 @@ var   common               = require('./common'),
 
 var serverOptions  = {
   name        : 'okr', 
-  version     : "1.7.5"
+  version     : "1.7.7"
 };
 
 const server = apiCommon.restify.createServer(serverOptions);
@@ -43,8 +45,9 @@ server.listen(3000, function () {
 
 // routes used to issue and verify authentication tokens - ADFS style
 server.post('/adfsLogin', apiAuthAdfs.adfsLogin);
-server.post('/adfsCheck', apiAuthAdfs.adfsCheck);
-apiCommon.passport.use(new apiCommon.passportBearer.Strategy(apiAuthAdfs.verifyToken));
+server.post('/adfsToken', apiAuthAdfs.adfsToken);
+server.post('/esaToken', apiAuthEsa.esaToken);
+apiCommon.passport.use(new apiCommon.passportBearer.Strategy(apiAuth.verifyToken));
 
 // APIs that return data to Ember frontend
 server.get('/quarters', apiQuarter.getQuarters);

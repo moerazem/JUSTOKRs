@@ -200,8 +200,9 @@ order by d.team, d.priority
 create or replace view userOrganisation as
 select u.id, 
        u.name,
-       u.email, 
+       u.email,
        u.token,
+       u.password,
        u.givenName, 
        u.surname, 
        u.organisation, 

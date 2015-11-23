@@ -5,7 +5,7 @@ var common   = require('./common'),
     dbCommon = require('./db_common'),
     pool     = dbCommon.pool;
 
-exports.getUser = function(token, cb) {
+exports.getUserByToken = function(token, cb) {
   pool.getConnection(function(err, connection) {
     if (err) {
       log.error(err);
@@ -28,13 +28,13 @@ exports.getUser = function(token, cb) {
   });
 };
 
-exports.validateUser = function (credentials, cb) {
+exports.getUserByPassword = function (credentials, cb) {
   pool.getConnection(function(err, connection) {
     if (err) {
       log.error(err);
       return cb(err);
     }
-    connection.query('select u.name, u.resetPassword, u.lastVersionUpdate from user u where u.name = ? and u.password = ?', credentials, function(err, rows){
+    connection.query('select * from userOrganisation where name = ? and password = ?', credentials, function(err, rows){
       if(err) {
         log.error(err);
         connection.release();

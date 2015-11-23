@@ -21,11 +21,17 @@ export default Ember.Route.extend(
       error: function(error) {
         var self = this;
         if (error.status === 401) { // the token didnt authenticate, perhaps due to someone else logging into the account or timeout
-          this.transitionTo('accountTimedOut').then(function() { 
-            setTimeout(function() {
-              self.get('session').invalidate();
-            }, 3000);
+          // comment following 3 lines unless using ADFS
+          self.get('session').invalidate().then(function() {
+            this.notify.alert('Invalid credentials - Please try to login again.');
+            this.transitionTo('login');
           });
+          // comment following 5 lines out for non ADFS
+          // this.transitionTo('accountTimedOut').then(function() { 
+          //   setTimeout(function() {
+          //     self.get('session').invalidate();
+          //   }, 3000);
+          // });
         } else {
           console.log(error);
           this.transitionTo('recordNotFound');

@@ -1,5 +1,4 @@
 "use strict";
-// this module is no longer used since ADFS is now being used
 var common    = require('./common'),
     log       = common.log,
     apiCommon = require('./api_common'),
@@ -17,9 +16,8 @@ function generateToken(data) {
   return sha256.update(data).digest("base64");
 }
 
-exports.login = function(req, res, next) {
-  this.log = log.child({ action: 'login', account: req.params.username }); 
-  this.log.info('log in attempt');
+exports.esaToken = function(req, res, next) {
+  this.log = log.child({ action: 'esaToken', account: req.params.username }); 
   var self = this;
   let username = req.params.username, 
       password = req.params.password;
@@ -27,10 +25,11 @@ exports.login = function(req, res, next) {
                   password ];
   async.waterfall([
     function authenticate(cb) { 
-      dbAuth.validateUser(fields, function (err, user) {
+      dbAuth.getUserByPassword(fields, function (err, user) {
         if (err) {
           return cb(err, null);
         }
+        self.log.info('user', {fields: fields, user: user});
         if (!user || user.length === 0) { 
           res.send(401, null);
           return cb(401, null);
@@ -96,27 +95,5 @@ exports.login = function(req, res, next) {
     res.send(200, retval);
     self.log.info('log in success');
     return next();
-  });
-};
-
-// check that the token is valid - is used for authorising Ember and API calls
-exports.verifyToken = function (token, cb) {
-  dbAuth.getUser(token, function (err, user) {
-    if (err) { return cb(err); }
-    // if not authenticated return error - could be due to two people logging into same account
-    if (!user) { 
-      return cb(new apiCommon.restify.InvalidCredentialsError('Invalid token'), null);
-    }
-    var tokenExp = moment(user.tokenExp).format('YYYY-MM-DD'),
-        timeNow  = moment().format('YYYY-MM-DD');
-    if (timeNow > tokenExp) { // if the token was issued by ADFS more than a day ago
-      log.info('token has expired'); 
-      return cb(new apiCommon.restify.InvalidCredentialsError('Expired token'), null);
-    }
-    var scope = 'all';
-    if (!user.organisation) {
-      scope = 'readonly';
-    }
-    return cb(null, user, { scope: scope });
   });
 };

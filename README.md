@@ -16,7 +16,7 @@ You will need the following things properly installed on your computer.
 * [Git](http://git-scm.com/)
 * [Node.js](http://nodejs.org/) (with NPM)
 * [Bower](http://bower.io/)
-* [Ember CLI](http://www.ember-cli.com/)
+* [Ember CLI](http://www.ember-cli.com)
 
 ## Installation
 
@@ -39,6 +39,7 @@ You will need the following things properly installed on your computer.
   * export OKR_DB_DB="okr"
   * export OKR_DB_USER="okr"
   * export OKR_DB_PASS="somethingHardToGuess"
+  * export OKR_AUTH_METHOD=Method used for Authentication - can be either ESA (Ember Simple Auth - see https://github.com/simplabs/ember-simple-auth) or ADFS (Microsoft AD) 
   * export OKR_AD_REDIRECT=Full URL to redirect to after login
   * export OKR_JIRA=URL to your JIRA install (if you have one)
 * create a /log folder

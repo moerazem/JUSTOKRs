@@ -20,6 +20,10 @@ module.exports = function(environment) {
   };
 
   ENV.NODE_HOST   = process.env.OKR_NODE;
+  // ENV.AUTH_METHOD = process.env.OKR_AUTH_METHOD;
+  // manual setting
+  ENV.AUTH_METHOD = "ADFS";
+  // ENV.AUTH_METHOD = "ESA";
   ENV.AD_REDIRECT = process.env.OKR_AD_REDIRECT;
   ENV.JIRA_HOST   = process.env.OKR_JIRA;
   ENV['simple-auth'] = {
@@ -27,10 +31,16 @@ module.exports = function(environment) {
     store: 'simple-auth-session-store:local-storage',
     crossOriginWhitelist: ENV.NODE_HOST.split()
   };
-  ENV['simple-auth-oauth2'] = {
-    // serverTokenEndpoint:  'http://localhost:3000/token'
-    serverTokenEndpoint:  ENV.NODE_HOST + '/adfsCheck'
-  }; 
+  // use appropriate authentication method - either Ember Simple Auth or ADFS
+  if (ENV.AUTH_METHOD === 'ESA') {
+    ENV['simple-auth-oauth2'] = {
+      serverTokenEndpoint: ENV.NODE_HOST + '/esaToken'
+    };
+  } else {
+    ENV['simple-auth-oauth2'] = {
+      serverTokenEndpoint:  ENV.NODE_HOST + '/adfsToken'
+    };
+  }
   ENV.APP.API_HOST = ENV.NODE_HOST;
 
   ENV['ember-can'] = {
@@ -40,12 +50,6 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
-
     ENV.contentSecurityPolicy = {
       'default-src': "'none'",
       'connect-src': "'self' http://localhost:3000",

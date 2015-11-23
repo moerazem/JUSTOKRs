@@ -41,8 +41,8 @@ exports.adfsLogin = function(req, res, next) {
 };
 
 // this routine is called from Ember login page and checks if the user has recently signed in with ADFS and if so will return the credentials to Ember
-exports.adfsCheck = function(req, res, next) {
-  this.log = log.child({ action: 'adfsCheck', token: token }); 
+exports.adfsToken = function(req, res, next) {
+  this.log = log.child({ action: 'adfsToken', token: token }); 
   var self = this;
   var token = null;
   token = decodeURIComponent(req.params.username);
@@ -50,7 +50,7 @@ exports.adfsCheck = function(req, res, next) {
 
   async.waterfall([
     function authenticate(cb) {
-      dbAuth.getUser(token, function (err, user) {
+      dbAuth.getUserByToken(token, function (err, user) {
         if (err) { 
           return cb(err, null); 
         }
@@ -128,24 +128,4 @@ exports.adfsCheck = function(req, res, next) {
   });
 };
 
-// check that the token is valid - is used for authorising Ember and API calls
-exports.verifyToken = function (token, cb) {
-  dbAuth.getUser(token, function (err, user) {
-    if (err) { return cb(err); }
-    // if not authenticated return error - could be due to two people logging into same account
-    if (!user) { 
-      return cb(new apiCommon.restify.InvalidCredentialsError('Invalid token'), null);
-    }
-    var tokenExp = moment(user.tokenExp).format('YYYY-MM-DD'),
-        timeNow  = moment().format('YYYY-MM-DD');
-    if (timeNow > tokenExp) { // if the token was issued by ADFS more than a day ago
-      log.info({user: user}, 'token has expired'); 
-      return cb(new apiCommon.restify.InvalidCredentialsError('Expired token'), null);
-    }
-    var scope = 'all';
-    if (!user.organisation) {
-      scope = 'readonly';
-    }
-    return cb(null, user, { scope: scope });
-  });
-};
+

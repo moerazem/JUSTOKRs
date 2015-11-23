@@ -1,6 +1,6 @@
 {
   "name": "okr",
-  "version": "1.7.5",
+  "version": "1.7.7",
   "description": "Small description for okr goes here",
   "private": true,
   "directories": {
@@ -42,7 +42,7 @@
     "ember-export-application-global": "^1.0.2",
     "ember-notify": "^3.2.1",
     "ember-sortable": "1.0.0",
-    "ember-validations": "^2.0.0-alpha.3",
+    "ember-validations": "^2.0.0-alpha.4",
     "moment": "~2.10.6",
     "mysql": "^2.9.0",
     "node-schedule": "^0.5.1",

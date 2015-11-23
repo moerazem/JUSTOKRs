@@ -145,6 +145,7 @@ create table user (
   givenName         varchar(100) not null,
   surname           varchar(100) not null,
   email             varchar(100) not null,
+  password          varchar(100) not null,
   organisation      integer,
   team              integer,
   role              integer,
