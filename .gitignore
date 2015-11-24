@@ -21,3 +21,9 @@ testem.log
 /sql/output
 /sql/backups
 .DS_Store
+
+# files that are set per authentication method
+/app/controllers/login.js
+/app/routes/login.js
+/app/routes/application.js
+/app/templates/login.hbs

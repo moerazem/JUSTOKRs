@@ -20,10 +20,7 @@ module.exports = function(environment) {
   };
 
   ENV.NODE_HOST   = process.env.OKR_NODE;
-  // ENV.AUTH_METHOD = process.env.OKR_AUTH_METHOD;
-  // manual setting
-  ENV.AUTH_METHOD = "ADFS";
-  // ENV.AUTH_METHOD = "ESA";
+  ENV.AUTH_METHOD = process.env.OKR_AUTH_METHOD;
   ENV.AD_REDIRECT = process.env.OKR_AD_REDIRECT;
   ENV.JIRA_HOST   = process.env.OKR_JIRA;
   ENV['simple-auth'] = {

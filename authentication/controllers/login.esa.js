@@ -3,7 +3,7 @@ import LoginControllerMixin from 'simple-auth/mixins/login-controller-mixin';
 import EmberValidations from 'ember-validations';
 
 export default Ember.Controller.extend(LoginControllerMixin,
-  EmberValidations.Mixin,
+  EmberValidations,
   {
     authenticator: 'simple-auth-authenticator:oauth2-password-grant',
     identificationErrors: function() {

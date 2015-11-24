@@ -1,0 +1,23 @@
+<h1>Login</h1>
+  <form {{action 'authenticate' on='submit'}} class="form-horizontal" role="form">
+    <div class="form-group">
+      <label for="identification" class="col-sm-2 control-label">Email Address</label>
+      <div class="col-sm-9">
+        {{input id='identification' placeholder='Enter your JUST EAT email address' value=identification autocapitalize="off" class="form-control"}}
+      </div>
+      {{#if errors.identification}} <div class="col-sm-1 invalid" data-toggle="tooltip" {{bind-attr title="identificationErrors"}}></div> {{/if}}
+    </div>
+    <div class="form-group">
+      <label for="password" class="col-sm-2 control-label">Password</label>
+      <div class="col-sm-9">
+        {{input id='password' placeholder='Enter your password' type='password' value=password class="form-control"}}
+      </div>
+      {{#if errors.password}} <div class="col-sm-1 invalid" data-toggle="tooltip" {{bind-attr title="passwordErrors"}}></div> {{/if}}
+    </div>
+    {{#if isValid}}
+    <button type="submit" class="btn btn-primary">Login</button>
+    {{else}}
+    <button type="submit" class="btn btn-primary disabled">Login</button>
+    {{/if}}
+  </form>
+<div class="spacer"></div>
