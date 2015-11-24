@@ -26,12 +26,6 @@ export default Ember.Route.extend(
             this.notify.alert('Invalid credentials - Please try to login again.');
             this.transitionTo('login');
           });
-          // comment following 5 lines out for non ADFS
-          // this.transitionTo('accountTimedOut').then(function() { 
-          //   setTimeout(function() {
-          //     self.get('session').invalidate();
-          //   }, 3000);
-          // });
         } else {
           console.log(error);
           this.transitionTo('recordNotFound');

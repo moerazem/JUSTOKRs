@@ -13,7 +13,7 @@ export default Ember.Route.extend(
     },
     actions: {
       reorderItems(newOrder) {
-        console.log('ordering');
+        console.log('ordering' + newOrder);
         // this.set('currentModel.items', newOrder);
       }
     }

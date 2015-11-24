@@ -18,7 +18,7 @@ else
 
   if [ "$OKR_AUTH_METHOD" == "ADFS" ];
   then
-    ln aauthentication/controllers/login.adfs.js app/controllers/login.js
+    ln authentication/controllers/login.adfs.js app/controllers/login.js
     ln authentication/routes/login.adfs.js app/routes/login.js
     ln authentication/routes/application.adfs.js app/routes/application.js
   else

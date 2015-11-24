@@ -89,8 +89,13 @@ exports.esaToken = function(req, res, next) {
     let retval = { "access_token"    : result.token, 
                    "token_type"      : 'bearer',
                    "current_quarter" : common.currentQuarter,
-                   "user"            : result.name,
-                   "reset_password"  : result.resetPassword,
+                   "user"            : result.givenName + ' ' + result.surname,
+                   "organisation"      : result.organisation,
+                   "organisation_name" : result.organisationName,
+                   "role"              : result.role,
+                   "user_organisation"      : result.organisation,
+                   "user_organisation_name" : result.organisationName,
+                   "user_role"              : result.role,
                    "version_update"  : result.versionUpdate };
     res.send(200, retval);
     self.log.info('log in success');
