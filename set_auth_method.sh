@@ -11,6 +11,8 @@ else
   rm -f app/routes/login.js
   rm -f app/routes/application.js
   rm -f app/templates/login.hbs
+  rm -f config/environment.js
+
   rm -rf tmp/*
 
   export OKR_AUTH_METHOD=$1
@@ -21,10 +23,12 @@ else
     ln authentication/controllers/login.adfs.js app/controllers/login.js
     ln authentication/routes/login.adfs.js app/routes/login.js
     ln authentication/routes/application.adfs.js app/routes/application.js
+    ln authentication/config/environment.adfs.js config/environment.js
   else
     ln authentication/controllers/login.esa.js app/controllers/login.js
     ln authentication/routes/login.esa.js app/routes/login.js
     ln authentication/routes/application.esa.js app/routes/application.js
     ln authentication/templates/login.esa.hbs app/templates/login.hbs
+    ln authentication/config/environment.esa.js config/environment.js
   fi
 fi

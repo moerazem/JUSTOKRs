@@ -29,7 +29,7 @@ module.exports = function(environment) {
     crossOriginWhitelist: ENV.NODE_HOST.split()
   };
   ENV['simple-auth-oauth2'] = {
-    serverTokenEndpoint:  ENV.NODE_HOST + '/adfsToken'
+    serverTokenEndpoint: ENV.NODE_HOST + '/esaToken'
   };
   ENV.APP.API_HOST = ENV.NODE_HOST;
 

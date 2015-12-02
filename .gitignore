@@ -27,3 +27,4 @@ testem.log
 /app/routes/login.js
 /app/routes/application.js
 /app/templates/login.hbs
+/config/environment.js

@@ -3,14 +3,6 @@
 -- change latestVersion in api/common.js to version ID (from versionUpdate e.g 6)
 -- change version in package.json to version name e.g. 1.4.1
 
-insert into versionUpdate 
-(id, name, description, releaseDate) 
-values
-( 18, 
-  'Version 1.7.7',
-  "",
-  '2015-11-23');
-
 alter table user add password varchar(100) not null;
 
 -- reload views: userOrganisation
