@@ -31,6 +31,7 @@ You will need the following things properly installed on your computer.
 
 ## Running / Development
 
+* You can choose to authenticate via Ember Simple Auth - ESA (see https://github.com/simplabs/ember-simple-auth) or via ADFS.  If you don't have an ADFS server to authenticate to then you should use ESA.  Ember needs a different set of files for each authentication method - You'll need to run the set_auth_method.sh script with a parameter of either ESA or ADFS - this will copy the files from the /authentication folder to the appropriate Ember folders.
 * Set up the following environment variables (e.g. in your .bash_profile)
   * export OKR_HOME="/Users/user.name" NB. it's assumed that the OKR source code will sit in a folder called /src/okr under this path
   * export OKR_EMBER="https://localhost:4200" - the URL of the Ember server
@@ -39,7 +40,7 @@ You will need the following things properly installed on your computer.
   * export OKR_DB_DB="okr"
   * export OKR_DB_USER="okr"
   * export OKR_DB_PASS="somethingHardToGuess"
-  * export OKR_AUTH_METHOD=Method used for Authentication - can be either ESA (Ember Simple Auth - see https://github.com/simplabs/ember-simple-auth) or ADFS (Microsoft AD) 
+  * export OKR_AUTH_METHOD=Method used for Authentication - can be either ESA (Ember Simple Auth) or ADFS (Microsoft AD) 
   * export OKR_AD_REDIRECT=Full URL to redirect to after login
   * export OKR_JIRA=URL to your JIRA install (if you have one)
 * create a /log folder
