@@ -1,6 +1,6 @@
 # JUST OKRs
 
-This is the JUSTOKRs application - it's an webapp to help large distributed teams manage & track their progress.  
+This is the JUSTOKRs application - it's a webapp to help large distributed teams manage & track their progress.  
 
 It's has three tiers:
 * Ember.js web app
