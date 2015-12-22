@@ -35,7 +35,7 @@ You will need the following things properly installed on your computer.
 * Set up the following environment variables (e.g. in your .bash_profile)
   * export OKR_HOME="/Users/user.name" NB. it's assumed that the OKR source code will sit in a folder called /src/okr under this path
   * export OKR_EMBER="https://localhost:4200" - the URL of the Ember server
-  * export OKR_EMBER="http://localhost:3000" - the URL of the Node server
+  * export OKR_NODE="http://localhost:3000" - the URL of the Node server
   * export OKR_DB_HOST="localhost"
   * export OKR_DB_DB="okr"
   * export OKR_DB_USER="okr"
