@@ -6,7 +6,7 @@
 -- grant file on *.* to okr@localhost;
 -- flush privileges;
 
-drop table quarter;
+drop table if exists quarter;
 
 create table quarter (
   id          integer not null auto_increment,
@@ -16,7 +16,7 @@ create table quarter (
   primary key (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-drop table team;
+drop table if exists team;
 
 create table team (
   id               integer not null auto_increment,
@@ -31,7 +31,7 @@ create table team (
   primary key (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-drop table objective;
+drop table if exists objective;
 
 create table objective (
   id               integer not null auto_increment,
@@ -44,7 +44,7 @@ create table objective (
   primary key (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-drop table keyResult;
+drop table if exists keyResult;
 
 create table keyResult (
   id              integer not null auto_increment,
@@ -63,7 +63,7 @@ create table keyResult (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 -- need to add FKs to quarter and objective
 
-drop table keyResultUpdate;
+drop table if exists keyResultUpdate;
 
 create table keyResultUpdate (
   id                integer not null auto_increment,
@@ -80,7 +80,7 @@ create table keyResultUpdate (
 alter table keyResultUpdate
 add index kru_kr_idx (keyResult);
 
-drop table deliverable;
+drop table if exists deliverable;
 
 create table deliverable (
   id               integer      not null auto_increment,
@@ -101,7 +101,7 @@ add index d_kr_idx (keyResult);
 alter table deliverable
 add index d_t_idx (team);
 
-drop table deliverableUpdate;
+drop table if exists deliverableUpdate;
 
 create table deliverableUpdate (
   id                integer not null auto_increment,
@@ -120,7 +120,7 @@ create table deliverableUpdate (
 alter table deliverableUpdate
 add index du_del_idx (deliverable);
 
-drop table organisation;
+drop table if exists organisation;
 
 create table organisation (
   id   integer not null auto_increment,
@@ -129,7 +129,7 @@ create table organisation (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ;
 
-drop table role;
+drop table if exists role;
 
 create table role (
   id   integer not null auto_increment,
@@ -137,7 +137,7 @@ create table role (
   primary key (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-drop table user;
+drop table if exists user;
 
 create table user (
   id                integer not null auto_increment,
@@ -157,7 +157,7 @@ create table user (
   unique (name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-drop table versionUpdate;
+drop table if exists versionUpdate;
 
 create table versionUpdate (
   id          integer       not null,
