@@ -24,7 +24,7 @@ You will need the following things properly installed on your computer.
 * change into the new directory
 * `npm install`
 * `bower install`
-* cp -r manual_install/* bower_components
+* `cp -r manual_install/* bower_components`
 * Set your database up - either
   * Create the DB yourself by running /sql/1create.sql & 2views.sql
   * Load the sample database using MySQLWorkbench
